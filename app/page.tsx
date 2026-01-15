@@ -1,6 +1,7 @@
 import { Experience } from 'app/components/experience'
 import { Education } from 'app/components/education'
 import { Publications } from 'app/components/publications'
+import { Skills } from 'app/components/skills'
 
 export default function Page() {
   return (
@@ -9,13 +10,13 @@ export default function Page() {
         Nikzad Khani
       </h1>
       <p className="mb-8 text-neutral-700 dark:text-neutral-300 leading-relaxed">
-        {`Software engineer with a strong background in Go, Python, and cloud-native technologies. 
-        Passionate about building efficient, scalable systems and exploring machine learning applications.`}
+        {`Senior Software Engineer at Verily in Boston, MA. I specialize in building scalable AI-driven applications and robust data pipelines using Go, Python, and cloud-native technologies.`}
       </p>
 
       <Experience />
       <Education />
       <Publications />
+      <Skills />
     </section>
   )
 }

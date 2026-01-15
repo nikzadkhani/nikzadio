@@ -28,7 +28,17 @@ export function Publications() {
                         </div>
                         <div className="text-neutral-700 dark:text-neutral-300">
                             <p className="font-medium text-sm text-neutral-600 dark:text-neutral-400 mb-1">{pub.conference}</p>
-                            <p className="text-sm leading-relaxed">{pub.description}</p>
+                            <div className="text-sm leading-relaxed">
+                                {Array.isArray(pub.description) ? (
+                                    <ul className="list-disc list-outside ml-4 space-y-1">
+                                        {pub.description.map((desc, i) => (
+                                            <li key={i}>{desc}</li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <p>{pub.description}</p>
+                                )}
+                            </div>
                         </div>
                     </div>
                 ))}

@@ -13,11 +13,22 @@ export function Experience() {
                                 {job.period}
                             </span>
                         </div>
+
                         <div className="text-neutral-700 dark:text-neutral-300">
                             <p className="font-medium">{job.title}</p>
                             <p className="text-sm text-neutral-600 dark:text-neutral-400">{job.location}</p>
                             {job.description && (
-                                <p className="mt-2 text-sm leading-relaxed">{job.description}</p>
+                                <div className="mt-2 text-sm leading-relaxed">
+                                    {Array.isArray(job.description) ? (
+                                        <ul className="list-disc list-outside ml-4 space-y-1">
+                                            {job.description.map((desc, i) => (
+                                                <li key={i}>{desc}</li>
+                                            ))}
+                                        </ul>
+                                    ) : (
+                                        <p>{job.description}</p>
+                                    )}
+                                </div>
                             )}
                         </div>
                     </div>

@@ -8,18 +8,20 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
 import { baseUrl } from './sitemap'
 
+// ... (imports remain)
+
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    default: 'Nikzad Khani',
+    template: '%s | Nikzad Khani',
   },
-  description: 'This is my portfolio.',
+  description: 'Software Engineer specializing in Go and Python.',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'Nikzad Khani',
+    description: 'Software Engineer specializing in Go and Python.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'Nikzad Khani',
     locale: 'en_US',
     type: 'website',
   },
