@@ -47,6 +47,7 @@ export default function RootLayout({
 }) {
   return (
     <html
+      suppressHydrationWarning
       lang="en"
       className={cx(
         'text-black bg-white dark:text-white dark:bg-black',

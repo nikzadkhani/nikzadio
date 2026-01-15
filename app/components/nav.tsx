@@ -6,6 +6,8 @@ const navItems = {
   },
 }
 
+
+
 export function Navbar() {
   return (
     <aside className="-ml-[8px] mb-16 tracking-tight">
@@ -26,6 +28,12 @@ export function Navbar() {
                 </Link>
               )
             })}
+            <Link
+              href="/resume"
+              className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1"
+            >
+              resume
+            </Link>
           </div>
         </nav>
       </div>

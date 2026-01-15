@@ -22,7 +22,7 @@ export default function Footer() {
 
         <li>
           <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-200"
             rel="noopener noreferrer"
             target="_blank"
             href="https://github.com/nikzadkhani"
@@ -33,7 +33,7 @@ export default function Footer() {
         </li>
         <li>
           <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-200"
             rel="noopener noreferrer"
             target="_blank"
             href="https://github.com/nikzadkhani/nikzadio"
