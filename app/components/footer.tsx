@@ -43,8 +43,8 @@ export default function Footer() {
           </a>
         </li>
       </ul>
-      <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-        © {new Date().getFullYear()} MIT Licensed
+      <p className="mt-8 text-stone-600 dark:text-stone-400 font-serif italic text-sm">
+        © {new Date().getFullYear()} MIT Licensed. Made in Jamaica Plain, Boston.
       </p>
     </footer>
   )
