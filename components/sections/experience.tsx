@@ -1,4 +1,4 @@
-import { EXPERIENCE } from 'app/data/portfolio'
+import { EXPERIENCE } from 'data/portfolio'
 
 export function Experience() {
     return (

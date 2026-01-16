@@ -1,7 +1,7 @@
-import { Experience } from 'app/components/experience'
-import { Education } from 'app/components/education'
-import { Publications } from 'app/components/publications'
-import { Skills } from 'app/components/skills'
+import { Experience } from '@/components/sections/experience'
+import { Education } from '@/components/sections/education'
+import { Publications } from '@/components/sections/publications'
+import { Skills } from '@/components/sections/skills'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {

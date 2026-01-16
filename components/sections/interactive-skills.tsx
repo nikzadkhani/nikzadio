@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-import { SKILLS, EXPERIENCE, PUBLICATIONS, Experience, Publication } from 'app/data/portfolio'
+import { SKILLS, EXPERIENCE, PUBLICATIONS, Experience, Publication } from 'data/portfolio'
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs))

@@ -1,4 +1,4 @@
-import { EDUCATION } from 'app/data/portfolio'
+import { EDUCATION } from 'data/portfolio'
 
 export function Education() {
     return (

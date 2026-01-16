@@ -1,4 +1,4 @@
-import { SKILLS } from 'app/data/portfolio'
+import { SKILLS } from 'data/portfolio'
 
 export function Skills() {
     return (

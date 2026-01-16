@@ -1,4 +1,4 @@
-import { PUBLICATIONS } from 'app/data/portfolio'
+import { PUBLICATIONS } from 'data/portfolio'
 
 export function Publications() {
     return (

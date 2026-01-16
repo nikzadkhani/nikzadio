@@ -1,14 +1,14 @@
 
 
 import Image from 'next/image'
-import { InteractiveSkills } from 'app/components/interactive-skills'
-import { Offline } from 'app/components/offline'
-import { Konami } from 'app/components/konami'
+import { InteractiveSkills } from '@/components/sections/interactive-skills'
+import { Offline } from '@/components/sections/offline'
+
 
 export default function Page() {
   return (
     <section>
-      <Konami />
+
       <div className="flex flex-col-reverse md:flex-row justify-between items-center mb-12">
         <div className="flex flex-col md:pr-8 max-w-lg">
           <h1 className="mb-6 text-4xl font-serif font-medium tracking-tight text-stone-900 dark:text-stone-100 italic">
