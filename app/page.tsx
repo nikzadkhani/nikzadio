@@ -6,8 +6,35 @@ import { Offline } from '@/components/sections/offline'
 
 
 export default function Page() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Nikzad Khani',
+    jobTitle: 'Senior Software Engineer',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Verily',
+    },
+    alumniOf: {
+      '@type': 'CollegeOrUniversity',
+      name: 'Boston University',
+    },
+    url: 'https://nikzad.io',
+    sameAs: ['https://github.com/nikzadkhani'],
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Boston',
+      addressRegion: 'MA',
+      addressCountry: 'US',
+    },
+  }
+
   return (
     <section>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <div className="flex flex-col-reverse md:flex-row justify-between items-center mb-12">
         <div className="flex flex-col md:pr-8 max-w-lg">

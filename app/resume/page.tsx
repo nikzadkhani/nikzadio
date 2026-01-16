@@ -6,7 +6,17 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
     title: 'Resume',
-    description: 'My professional experience and skills.',
+    description: 'Professional resume of Nikzad Khani, Senior Software Engineer at Verily. Experience in Go, Python, and Cloud-Native technologies.',
+    openGraph: {
+        images: [
+            {
+                url: '/og?title=Resume',
+                width: 1200,
+                height: 630,
+                alt: 'Nikzad Khani Resume',
+            },
+        ],
+    },
 }
 
 export default function ResumePage() {
