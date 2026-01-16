@@ -6,8 +6,8 @@ import { SKILLS } from 'data/portfolio'
 // Mock framer-motion to avoid animation issues in tests
 vi.mock('framer-motion', () => ({
     motion: {
-        div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
-        button: ({ children, onClick, ...props }: any) => <button onClick={onClick} {...props}>{children}</button>,
+        div: ({ children, whileHover, whileTap, layout, initial, animate, exit, transition, ...props }: any) => <div {...props}>{children}</div>,
+        button: ({ children, onClick, whileHover, whileTap, layout, initial, animate, exit, transition, ...props }: any) => <button onClick={onClick} {...props}>{children}</button>,
     },
     AnimatePresence: ({ children }: any) => <>{children}</>,
 }))

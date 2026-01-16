@@ -4,7 +4,7 @@ import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 
 export function ThemeToggle() {
-    const { setTheme, theme } = useTheme()
+    const { setTheme, resolvedTheme } = useTheme()
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
@@ -14,14 +14,14 @@ export function ThemeToggle() {
     if (!mounted) {
         return null
     }
-    console.log("Theme: ", theme)
+
     return (
         <button
             className="p-2 transition-colors hover:text-sage-700 dark:hover:text-sage-300"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
             aria-label="Toggle Dark Mode"
         >
-            {theme === 'dark' ? (
+            {resolvedTheme === 'dark' ? (
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="18"

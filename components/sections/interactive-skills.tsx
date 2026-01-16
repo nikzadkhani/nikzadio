@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { SKILLS, EXPERIENCE, PUBLICATIONS, Experience, Publication } from 'data/portfolio'
+import { formatDate } from 'utils/date'
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs))
@@ -151,9 +152,9 @@ export function InteractiveSkills() {
                                                         <div className="text-sm text-neutral-500">{exp.company}</div>
                                                     </div>
                                                     <div className="text-xs font-mono text-neutral-400">
-                                                        {exp.start.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                                                        <span className="whitespace-nowrap">{formatDate(exp.start)}</span>
                                                         {' - '}
-                                                        {exp.end ? exp.end.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : 'Present'}
+                                                        <span className="whitespace-nowrap">{exp.end ? formatDate(exp.end) : 'Present'}</span>
                                                     </div>
                                                 </div>
                                             </motion.div>

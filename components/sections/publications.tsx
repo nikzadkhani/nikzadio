@@ -1,4 +1,5 @@
 import { PUBLICATIONS } from 'data/portfolio'
+import { formatDate } from 'utils/date'
 
 export function Publications() {
     return (
@@ -22,8 +23,8 @@ export function Publications() {
                                     pub.title
                                 )}
                             </h3>
-                            <span className="text-sm text-neutral-600 dark:text-neutral-400 tabular-nums">
-                                {pub.date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                            <span className="text-sm text-neutral-600 dark:text-neutral-400 tabular-nums whitespace-nowrap shrink-0">
+                                {formatDate(pub.date)}
                             </span>
                         </div>
                         <div className="text-neutral-700 dark:text-neutral-300">

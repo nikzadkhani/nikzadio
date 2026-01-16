@@ -16,15 +16,9 @@ describe('Skills Section', () => {
         expect(screen.getByText('Technical Skills')).toBeDefined()
     })
 
-    it('renders skill categories', () => {
+    it('renders skill items as a flattened list', () => {
         render(<Skills />)
-        expect(screen.getByText('Test Category')).toBeDefined()
-        expect(screen.getByText('Another Category')).toBeDefined()
-    })
-
-    it('renders skill items', () => {
-        render(<Skills />)
-        expect(screen.getByText('Skill 1, Skill 2')).toBeDefined()
-        expect(screen.getByText('Skill A')).toBeDefined()
+        // Skills should be joined by comma and space
+        expect(screen.getByText('Skill 1, Skill 2, Skill A')).toBeDefined()
     })
 })
