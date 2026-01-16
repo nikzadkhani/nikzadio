@@ -5,23 +5,19 @@
 @theme {
   --font-serif: var(--font-serif);
 
-  --color-sage-50: #f4f7f4;
-  --color-sage-100: #e3ebe3;
-  --color-sage-200: #c5d8c5;
-  --color-sage-300: #9ebf9e;
-  --color-sage-400: #78a178;
-  --color-sage-500: #5b855b;
-  --color-sage-600: #466846;
-  --color-sage-700: #3a533a;
-  --color-sage-800: #314231;
-  --color-sage-700: #3a533a;
-  --color-sage-800: #314231;
-  --color-sage-900: #293629;
+  /* Liquid Glass Palette - Dark Mode Primary */
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-surface: rgba(10, 10, 10, 0.4);
+  --color-glass-highlight: rgba(255, 255, 255, 0.05);
+
+  /* Architect / Infrastructure Tones */
+  --color-arch-blue-500: #3b82f6;
+  --color-arch-cyan-400: #22d3ee;
+  --color-arch-void: #050505;
 
   --animate-shimmer: shimmer 2s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
 }
-
-
 
 @keyframes shimmer {
   from {
@@ -33,41 +29,85 @@
   }
 }
 
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
 
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
 
 ::selection {
-  background-color: #47a3f3;
-  color: #fefefe;
+  background-color: var(--color-arch-cyan-400);
+  color: black;
+  text-shadow: none;
 }
 
 :root {
-  --sh-class: #2d5e9d;
-  --sh-identifier: #354150;
-  --sh-sign: #8996a3;
-  --sh-string: #007f7a;
-  --sh-keyword: #e02518;
-  --sh-comment: #a19595;
-  --sh-jsxliterals: #6266d1;
-  --sh-property: #e25a1c;
-  --sh-entity: #e25a1c;
-}
-
-:root[class~="dark"] {
-  --sh-class: #4c97f8;
-  --sh-identifier: white;
-  --sh-keyword: #f47067;
-  --sh-string: #0fa295;
-
-  color-scheme: dark;
+  /* Syntax Highlighting - Lensed Syntax */
+  --sh-class: #60a5fa;
+  /* blue-400 */
+  --sh-identifier: #e5e7eb;
+  /* gray-200 */
+  --sh-sign: #9ca3af;
+  /* gray-400 */
+  --sh-string: #22d3ee;
+  /* cyan-400 */
+  --sh-keyword: #f472b6;
+  /* pink-400 */
+  --sh-comment: #6b7280;
+  /* gray-500 */
+  --sh-jsxliterals: #818cf8;
+  /* indigo-400 */
+  --sh-property: #38bdf8;
+  /* sky-400 */
+  --sh-entity: #38bdf8;
 }
 
 html {
   min-width: 360px;
+  background-color: var(--color-arch-void);
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Deep Field Background */
+  background-color: var(--color-arch-void);
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.15), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(34, 211, 238, 0.08), transparent 30%);
+  background-attachment: fixed;
+  color: #ededed;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar hiding for clean glass aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .prose .anchor {
   @apply absolute invisible no-underline;
-
   margin-left: -1em;
   padding-right: 0.5em;
   width: 80%;
@@ -80,11 +120,11 @@ html {
 }
 
 .prose a {
-  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+  @apply underline transition-all decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:text-cyan-400 hover:decoration-cyan-400/50;
 }
 
 .prose .anchor:after {
-  @apply text-neutral-300 dark:text-neutral-700;
+  @apply text-neutral-700;
   content: '#';
 }
 
@@ -93,17 +133,22 @@ html {
 }
 
 .prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
+  @apply rounded-xl overflow-x-auto py-3 px-4 text-sm;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--color-glass-border);
+  backdrop-filter: blur(8px);
 }
 
 .prose code {
-  @apply px-1 py-0.5 rounded-lg;
+  @apply px-1 py-0.5 rounded-md;
+  background: rgba(255, 255, 255, 0.05);
+  font-family: var(--font-geek-mono), monospace;
 }
 
 .prose pre code {
-  @apply p-0;
+  @apply p-0 bg-transparent;
   border: initial;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .prose code span {
@@ -111,74 +156,57 @@ html {
 }
 
 .prose img {
-  /* Don't apply styles to next/image */
-  @apply m-0;
+  @apply m-0 rounded-xl border border-white/5 shadow-2xl;
 }
 
 .prose p {
-  @apply my-4 text-neutral-800 dark:text-neutral-200;
+  @apply my-6 text-neutral-300 leading-relaxed;
 }
 
 .prose h1 {
-  @apply text-4xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-4xl font-medium tracking-tight mt-10 mb-6 text-white;
 }
 
 .prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-2xl font-medium tracking-tight mt-10 mb-4 text-white;
 }
 
 .prose h3 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-xl font-medium tracking-tight mt-8 mb-4 text-neutral-100;
 }
 
 .prose h4 {
-  @apply text-lg font-medium tracking-tight mt-6 mb-2;
+  @apply text-lg font-medium tracking-tight mt-8 mb-4 text-neutral-200;
 }
 
 .prose strong {
-  @apply font-medium;
+  @apply font-semibold text-white;
 }
 
 .prose ul {
-  @apply list-disc pl-6;
+  @apply list-disc pl-6 text-neutral-300;
 }
 
 .prose ol {
-  @apply list-decimal pl-6;
+  @apply list-decimal pl-6 text-neutral-300;
 }
 
 .prose> :first-child {
-  /* Override removing top margin, causing layout shift */
   margin-top: 1.25em !important;
   margin-bottom: 1.25em !important;
 }
 
-pre::-webkit-scrollbar {
-  display: none;
+/* Glass Utilities */
+.glass-panel {
+  background: var(--color-glass-surface);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-glass-border);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
 }
 
-pre {
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
-}
-
-/* Remove Safari input shadow on mobile */
-input[type='text'],
-input[type='email'] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-table {
-  display: block;
-  max-width: fit-content;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-.title {
-  text-wrap: balance;
+.text-glow {
+  text-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
 }

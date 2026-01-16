@@ -78,13 +78,15 @@ export function InteractiveSkills() {
                                             key={skill}
                                             onClick={() => handleSkillClick(skill)}
                                             className={cn(
-                                                "px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 border",
+                                                "px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300",
+                                                "backdrop-blur-md border",
                                                 isSelected
-                                                    ? "bg-neutral-900 text-white border-neutral-900 dark:bg-white dark:text-black dark:border-white shadow-md scale-105"
-                                                    : "bg-white text-neutral-600 border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:bg-neutral-950 dark:text-neutral-400 dark:border-neutral-800 dark:hover:border-neutral-700"
+                                                    ? "bg-cyan-500/20 text-cyan-300 border-cyan-500/50 shadow-[0_0_15px_rgba(34,211,238,0.3)]"
+                                                    : "bg-white/5 text-neutral-400 border-white/10 hover:border-white/20 hover:bg-white/10 hover:text-neutral-200"
                                             )}
-                                            whileHover={{ scale: 1.05 }}
+                                            whileHover={{ scale: 1.05, y: -2 }}
                                             whileTap={{ scale: 0.95 }}
+                                            transition={{ type: "spring", stiffness: 400, damping: 25 }}
                                             layout
                                         >
                                             {skill}
@@ -99,7 +101,7 @@ export function InteractiveSkills() {
                 {/* Right Column: Details */}
                 <div
                     ref={detailsRef}
-                    className="lg:col-span-7 min-h-[400px] border-t lg:border-t-0 lg:border-l border-neutral-200 dark:border-neutral-800 pt-8 lg:pt-0 lg:pl-8"
+                    className="lg:col-span-7 min-h-[400px] border-t lg:border-t-0 lg:border-l border-white/10 pt-8 lg:pt-0 lg:pl-8"
                 >
                     <AnimatePresence mode="wait">
                         {selectedSkill ? (
@@ -111,9 +113,9 @@ export function InteractiveSkills() {
                                 transition={{ duration: 0.3 }}
                                 className="space-y-6"
                             >
-                                <div className="flex items-baseline justify-between border-b border-neutral-200 dark:border-neutral-800 pb-4">
-                                    <h3 className="text-3xl font-bold tracking-tight">{selectedSkill}</h3>
-                                    <span className="text-lg text-neutral-500 font-mono">
+                                <div className="flex items-baseline justify-between border-b border-white/10 pb-4">
+                                    <h3 className="text-3xl font-bold tracking-tight text-white text-glow">{selectedSkill}</h3>
+                                    <span className="text-lg text-cyan-400 font-mono">
                                         {totalYears.toFixed(1)}+ Years
                                     </span>
                                 </div>
@@ -121,11 +123,11 @@ export function InteractiveSkills() {
                                 {/* Experience Chart / Visual */}
                                 <div className="space-y-2">
                                     <div className="text-xs uppercase tracking-widest text-neutral-500">Experience Activity</div>
-                                    <div className="h-2 w-full bg-neutral-100 dark:bg-neutral-900 rounded-full overflow-hidden">
+                                    <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
                                         <motion.div
-                                            className="h-full bg-neutral-900 dark:bg-white"
+                                            className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 shadow-[0_0_10px_rgba(34,211,238,0.5)]"
                                             initial={{ width: 0 }}
-                                            animate={{ width: `${Math.min((totalYears / 8) * 100, 100)}%` }} // Assume 8 years is max bar
+                                            animate={{ width: `${Math.min((totalYears / 8) * 100, 100)}%` }}
                                             transition={{ duration: 0.8, ease: "easeOut" }}
                                         />
                                     </div>
@@ -144,7 +146,7 @@ export function InteractiveSkills() {
                                                 initial={{ opacity: 0, y: 10 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 transition={{ delay: idx * 0.1 }}
-                                                className="bg-neutral-50 dark:bg-neutral-900/50 p-4 rounded-lg border border-neutral-100 dark:border-neutral-800"
+                                                className="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:border-cyan-500/30 transition-colors"
                                             >
                                                 <div className="flex justify-between items-start mb-2">
                                                     <div>
@@ -166,7 +168,7 @@ export function InteractiveSkills() {
                                                 initial={{ opacity: 0, y: 10 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 transition={{ delay: (relatedExperience.length + idx) * 0.1 }}
-                                                className="bg-neutral-50 dark:bg-neutral-900/50 p-4 rounded-lg border border-neutral-100 dark:border-neutral-800"
+                                                className="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 hover:border-cyan-500/30 transition-colors"
                                             >
                                                 <div className="flex justify-between items-start mb-2">
                                                     <div>

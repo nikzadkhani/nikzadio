@@ -57,21 +57,19 @@ export default function RootLayout({
     <html
       suppressHydrationWarning
       lang="en"
-    // className={cx(
-    //   GeistSans.variable,
-    //   GeistMono.variable,
-    //   playfair.variable
-    // )}
+      className="dark"
     >
-      <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto text-stone-800 bg-stone-50 dark:text-stone-200 dark:bg-stone-900">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
-            <Navbar />
-            {children}
-            <Footer />
-            <Analytics />
-            <SpeedInsights />
-          </main>
+      <body className="antialiased min-h-screen text-stone-200 bg-[#050505]">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
+          <div className="relative z-10 flex flex-col items-center min-h-screen">
+            <main className="w-full max-w-2xl px-4 md:px-0 py-12 md:py-20">
+              <Navbar />
+              {children}
+              <Footer />
+              <Analytics />
+              <SpeedInsights />
+            </main>
+          </div>
         </ThemeProvider>
       </body>
     </html>
