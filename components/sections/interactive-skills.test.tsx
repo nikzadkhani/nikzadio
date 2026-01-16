@@ -35,7 +35,7 @@ describe('InteractiveSkills', () => {
 
         // Should show years of experience and potentially related roles
         expect(screen.getByText(/Years/)).toBeDefined()
-        expect(screen.getByText(firstSkill)).toBeDefined()
+        expect(screen.getAllByText(firstSkill).length).toBeGreaterThan(1) // Shows in button and title
     })
 
     it('toggles selection off when clicked again', () => {
@@ -44,9 +44,9 @@ describe('InteractiveSkills', () => {
         const button = screen.getByText(firstSkill)
 
         fireEvent.click(button)
-        expect(screen.queryByText(/Select a technology from the left/i)).toBeNull()
+        expect(screen.queryByText(/Select a technology from the above/i)).toBeNull()
 
         fireEvent.click(button)
-        expect(screen.getByText(/Select a technology from the left/i)).toBeDefined()
+        expect(screen.getByText(/Select a technology from the above/i)).toBeDefined()
     })
 })

@@ -10,6 +10,6 @@ describe('Education', () => {
 
     it('renders university name', () => {
         render(<Education />)
-        expect(screen.getAllByText(/Tufts University/i).length).toBeGreaterThan(0)
+        expect(screen.getAllByText(/Boston University/i).length).toBeGreaterThan(0)
     })
 })

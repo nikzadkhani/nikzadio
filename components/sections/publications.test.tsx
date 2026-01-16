@@ -8,8 +8,8 @@ describe('Publications', () => {
         expect(screen.getByText('Publications')).toBeDefined()
     })
 
-    it('renders google scholar link', () => {
+    it('renders publication title', () => {
         render(<Publications />)
-        expect(screen.getAllByText(/Google Scholar/i).length).toBeGreaterThan(0)
+        expect(screen.getByText(/An Exploration of Deep Reinforcement Learning Methods/i)).toBeDefined()
     })
 })

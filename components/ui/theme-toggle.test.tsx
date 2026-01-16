@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, cleanup } from '@testing-library/react'
 import { ThemeToggle } from './theme-toggle'
 
 // Mock next-themes
@@ -13,6 +13,7 @@ vi.mock('next-themes', () => ({
 
 describe('ThemeToggle', () => {
     beforeEach(() => {
+        cleanup()
         mockSetTheme.mockClear()
     })
 

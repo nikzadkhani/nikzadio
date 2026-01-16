@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
@@ -38,6 +38,7 @@ export const getAllSkillExperience = (skill: string) => {
 
 export function InteractiveSkills() {
     const [selectedSkill, setSelectedSkill] = useState<string | null>(null)
+    const detailsRef = useRef<HTMLDivElement>(null)
 
     const categories = Object.entries(SKILLS)
 
@@ -46,6 +47,12 @@ export function InteractiveSkills() {
             setSelectedSkill(null)
         } else {
             setSelectedSkill(skill)
+            // Small delay to allow state update and DOM render
+            setTimeout(() => {
+                if (window.innerWidth < 1024 && detailsRef.current) {
+                    detailsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
+            }, 100)
         }
     }
 
@@ -89,7 +96,10 @@ export function InteractiveSkills() {
                 </div>
 
                 {/* Right Column: Details */}
-                <div className="lg:col-span-7 min-h-[400px] border-l border-neutral-200 dark:border-neutral-800 lg:pl-8">
+                <div
+                    ref={detailsRef}
+                    className="lg:col-span-7 min-h-[400px] border-t lg:border-t-0 lg:border-l border-neutral-200 dark:border-neutral-800 pt-8 lg:pt-0 lg:pl-8"
+                >
                     <AnimatePresence mode="wait">
                         {selectedSkill ? (
                             <motion.div
@@ -177,14 +187,14 @@ export function InteractiveSkills() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
-                                className="h-full flex flex-col items-center justify-center text-center text-neutral-400 space-y-4 p-8"
+                                className="h-full flex flex-col items-center justify-center text-center text-neutral-400 space-y-4 p-8 min-h-[200px]"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
                                     <circle cx="12" cy="12" r="10"></circle>
                                     <line x1="12" y1="16" x2="12" y2="12"></line>
                                     <line x1="12" y1="8" x2="12.01" y2="8"></line>
                                 </svg>
-                                <p>Select a technology from the left to view experience details.</p>
+                                <p>Select a technology from the above to view experience details.</p>
                             </motion.div>
                         )}
                     </AnimatePresence>
