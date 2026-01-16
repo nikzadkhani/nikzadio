@@ -13,7 +13,23 @@
   --color-sage-600: #466846;
   --color-sage-700: #3a533a;
   --color-sage-800: #314231;
+  --color-sage-700: #3a533a;
+  --color-sage-800: #314231;
   --color-sage-900: #293629;
+
+  --animate-shimmer: shimmer 2s linear infinite;
+}
+
+
+
+@keyframes shimmer {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
 }
 
 
@@ -35,17 +51,13 @@
   --sh-entity: #e25a1c;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sh-class: #4c97f8;
-    --sh-identifier: white;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
-  }
+:root[class~="dark"] {
+  --sh-class: #4c97f8;
+  --sh-identifier: white;
+  --sh-keyword: #f47067;
+  --sh-string: #0fa295;
 
-  html {
-    color-scheme: dark;
-  }
+  color-scheme: dark;
 }
 
 html {
