@@ -1,7 +1,7 @@
 
 
 import Image from 'next/image'
-import { Stack } from 'app/components/stack'
+import { InteractiveSkills } from 'app/components/interactive-skills'
 import { Offline } from 'app/components/offline'
 import { Konami } from 'app/components/konami'
 
@@ -15,7 +15,7 @@ export default function Page() {
             Nikzad Khani
           </h1>
           <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-4 text-lg">
-            {`Senior Software Engineer at Verily in Boston, MA. I specialize in building scalable AI-driven applications and robust data pipelines using Go, Python, and cloud-native technologies.`}
+            {`Full Stack Engineer in Boston, MA. I specialize in building scalable AI-driven applications and robust data pipelines using Go, Python, and cloud-native technologies.`}
           </p>
           <p className="text-sm font-mono text-sage-700 dark:text-sage-400">
             B.A. Computer Science, Boston University '21
@@ -33,7 +33,7 @@ export default function Page() {
         </div>
       </div>
 
-      <Stack />
+      <InteractiveSkills />
       <Offline />
     </section>
   )

@@ -23,7 +23,7 @@ export function Publications() {
                                 )}
                             </h3>
                             <span className="text-sm text-neutral-600 dark:text-neutral-400 tabular-nums">
-                                {pub.date}
+                                {pub.date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                             </span>
                         </div>
                         <div className="text-neutral-700 dark:text-neutral-300">

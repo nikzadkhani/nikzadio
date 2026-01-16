@@ -10,7 +10,9 @@ export function Experience() {
                         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
                             <h3 className="font-medium text-lg">{job.company}</h3>
                             <span className="text-sm text-neutral-600 dark:text-neutral-400 tabular-nums">
-                                {job.period}
+                                {job.start.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                                {' - '}
+                                {job.end ? job.end.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : 'Present'}
                             </span>
                         </div>
 

@@ -10,7 +10,7 @@ export function Education() {
                         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
                             <h3 className="font-medium text-lg">{edu.school}</h3>
                             <span className="text-sm text-neutral-600 dark:text-neutral-400 tabular-nums">
-                                {edu.period}
+                                {edu.start.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                             </span>
                         </div>
                         <p className="text-neutral-700 dark:text-neutral-300">
