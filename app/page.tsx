@@ -9,25 +9,22 @@ export default function Page() {
   return (
     <section>
 
-      <div className="flex flex-col-reverse md:flex-row justify-between items-center mb-12">
-        <div className="flex flex-col md:pr-8 max-w-lg">
-          <h1 className="mb-6 text-4xl font-serif font-medium tracking-tight text-stone-900 dark:text-stone-100 italic">
+      <div className="flex flex-col-reverse md:flex-row justify-between items-start mb-24 mt-20">
+        <div className="flex flex-col md:pr-12 max-w-2xl">
+          <h1 className="mb-6 text-5xl md:text-6xl font-bold tracking-tight text-black dark:text-white">
             Nikzad Khani
           </h1>
-          <p className="text-stone-700 dark:text-stone-300 leading-relaxed mb-4 text-lg">
-            {`Full Stack Engineer in Boston, MA. I specialize in building scalable AI-driven applications and robust data pipelines using Go, Python, and cloud-native technologies.`}
-          </p>
-          <p className="text-sm font-mono text-sage-700 dark:text-sage-400">
-            B.A. Computer Science, Boston University '21
+          <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 text-xl max-w-lg">
+            {`Senior Full Stack Engineer. Architecting high-performance systems and intuitive interfaces. Specializing in scalable distributed systems and modern frontend frameworks.`}
           </p>
         </div>
         <div className="mb-8 md:mb-0 shrink-0 relative">
           <Image
             src="/me.jpg"
             alt="Nikzad Khani"
-            width={180}
-            height={180}
-            className="rounded-2xl grayscale hover:grayscale-0 transition-all duration-700 ease-in-out object-cover shadow-xl rotate-3 hover:rotate-0"
+            width={150}
+            height={150}
+            className="rounded-2xl grayscale transition-all duration-500 ease-in-out object-cover border border-neutral-200 dark:border-neutral-800 shadow-sm"
             priority
           />
         </div>

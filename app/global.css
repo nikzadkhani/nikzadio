@@ -3,44 +3,18 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+  --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
-
-  --color-sage-50: #f4f7f4;
-  --color-sage-100: #e3ebe3;
-  --color-sage-200: #c5d8c5;
-  --color-sage-300: #9ebf9e;
-  --color-sage-400: #78a178;
-  --color-sage-500: #5b855b;
-  --color-sage-600: #466846;
-  --color-sage-700: #3a533a;
-  --color-sage-800: #314231;
-  --color-sage-700: #3a533a;
-  --color-sage-800: #314231;
-  --color-sage-900: #293629;
-
-  --animate-shimmer: shimmer 2s linear infinite;
+  --font-mono: var(--font-mono);
 }
-
-
-
-@keyframes shimmer {
-  from {
-    background-position: 0 0;
-  }
-
-  to {
-    background-position: -200% 0;
-  }
-}
-
-
 
 ::selection {
-  background-color: #47a3f3;
-  color: #fefefe;
+  background-color: #0055ff;
+  color: #ffffff;
 }
 
 :root {
+  /* Syntax Highlighting Light */
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
   --sh-sign: #8996a3;
@@ -53,6 +27,7 @@
 }
 
 :root[class~="dark"] {
+  /* Syntax Highlighting Dark */
   --sh-class: #4c97f8;
   --sh-identifier: white;
   --sh-keyword: #f47067;
@@ -63,11 +38,28 @@
 
 html {
   min-width: 360px;
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Better font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Overrides */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-feature-settings: "ss01", "cv01", "cv11";
+  letter-spacing: -0.02em;
 }
 
 .prose .anchor {
   @apply absolute invisible no-underline;
-
   margin-left: -1em;
   padding-right: 0.5em;
   width: 80%;
@@ -80,7 +72,7 @@ html {
 }
 
 .prose a {
-  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] hover:decoration-neutral-600 dark:hover:decoration-neutral-400;
 }
 
 .prose .anchor:after {
@@ -93,92 +85,73 @@ html {
 }
 
 .prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
+  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-800 py-3 px-4 text-sm font-mono leading-relaxed;
 }
 
 .prose code {
-  @apply px-1 py-0.5 rounded-lg;
+  @apply px-1 py-0.5 rounded-md bg-neutral-100 dark:bg-neutral-800 font-mono text-sm;
 }
 
 .prose pre code {
-  @apply p-0;
+  @apply p-0 bg-transparent dark:bg-transparent;
   border: initial;
-  line-height: 1.5;
-}
-
-.prose code span {
-  @apply font-medium;
 }
 
 .prose img {
-  /* Don't apply styles to next/image */
-  @apply m-0;
+  @apply m-0 rounded-lg border border-neutral-200 dark:border-neutral-800;
 }
 
 .prose p {
-  @apply my-4 text-neutral-800 dark:text-neutral-200;
+  @apply my-6 text-neutral-700 dark:text-neutral-300 leading-7;
 }
 
 .prose h1 {
-  @apply text-4xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-4xl font-bold tracking-tight mt-10 mb-4 text-black dark:text-white;
 }
 
 .prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-2xl font-bold tracking-tight mt-10 mb-4 text-black dark:text-white;
 }
 
 .prose h3 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
-}
-
-.prose h4 {
-  @apply text-lg font-medium tracking-tight mt-6 mb-2;
+  @apply text-xl font-semibold tracking-tight mt-8 mb-4 text-black dark:text-white;
 }
 
 .prose strong {
-  @apply font-medium;
+  @apply font-semibold text-black dark:text-white;
 }
 
 .prose ul {
-  @apply list-disc pl-6;
+  @apply list-disc pl-6 my-6 text-neutral-700 dark:text-neutral-300;
 }
 
 .prose ol {
-  @apply list-decimal pl-6;
+  @apply list-decimal pl-6 my-6 text-neutral-700 dark:text-neutral-300;
 }
 
-.prose> :first-child {
-  /* Override removing top margin, causing layout shift */
-  margin-top: 1.25em !important;
-  margin-bottom: 1.25em !important;
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-pre::-webkit-scrollbar {
-  display: none;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-pre {
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
+::-webkit-scrollbar-thumb {
+  background: #e5e5e5;
+  border-radius: 4px;
 }
 
-/* Remove Safari input shadow on mobile */
-input[type='text'],
-input[type='email'] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+:root[class~="dark"] ::-webkit-scrollbar-thumb {
+  background: #333;
 }
 
-table {
-  display: block;
-  max-width: fit-content;
-  overflow-x: auto;
-  white-space: nowrap;
+::-webkit-scrollbar-thumb:hover {
+  background: #d4d4d4;
 }
 
-.title {
-  text-wrap: balance;
+:root[class~="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #444;
 }
