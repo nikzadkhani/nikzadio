@@ -64,11 +64,14 @@ export default function RootLayout({
     // )}
     >
       <body className="antialiased text-stone-800 dark:text-stone-200 bg-stone-50 dark:bg-stone-900 transition-colors duration-300">
-        <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
-          <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] opacity-30 dark:opacity-20 animate-liquid
-            bg-[radial-gradient(circle_at_center,var(--liquid-accent-1),transparent_50%),radial-gradient(circle_at_center,var(--liquid-accent-2),transparent_50%),radial-gradient(circle_at_center,var(--liquid-accent-3),transparent_50%)]
-            [background-size:50%_50%,50%_50%,50%_50%] [background-position:0_0,100%_0,50%_100%] [filter:blur(60px)]"
-          />
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          <div className="bg-noise" />
+          {/* Primary Orb - Top Left */}
+          <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-purple-400/20 rounded-full blur-[120px] animate-liquid mix-blend-multiply dark:mix-blend-screen" />
+          {/* Secondary Orb - Bottom Right */}
+          <div className="absolute bottom-[0%] right-[-5%] w-[500px] h-[500px] bg-blue-400/20 rounded-full blur-[100px] animate-liquid [animation-delay:5s] mix-blend-multiply dark:mix-blend-screen" />
+          {/* Tertiary Orb - Middle/Top Right */}
+          <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-teal-400/20 rounded-full blur-[90px] animate-liquid [animation-delay:10s] mix-blend-multiply dark:mix-blend-screen" />
         </div>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <main className="flex-auto min-w-0 flex flex-col px-2 md:px-0 max-w-xl mx-4 mt-8 lg:mx-auto relative z-10">

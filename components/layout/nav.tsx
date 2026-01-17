@@ -16,7 +16,7 @@ export function Navbar() {
 
   return (
     <div className="fixed top-6 inset-x-0 mx-auto z-50 flex justify-center px-4 pointer-events-none">
-      <nav className="flex items-center gap-1 p-1.5 rounded-full bg-white/20 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-lg pointer-events-auto">
+      <nav className="flex items-center gap-1 p-1.5 rounded-full bg-white/20 dark:bg-black/20 backdrop-blur-[32px] backdrop-saturate-150 border border-white/25 dark:border-white/10 ring-1 ring-white/30 dark:ring-white/10 shadow-2xl shadow-black/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.4)] pointer-events-auto">
         {Object.entries(navItems).map(([path, { name }]) => {
           const isActive = pathname === path || (path !== '/' && pathname?.startsWith(path));
 
@@ -25,14 +25,14 @@ export function Navbar() {
               key={path}
               href={path}
               className={cn(
-                "relative px-4 py-2 text-sm font-medium transition-colors hover:text-black dark:hover:text-white",
+                "relative px-4 py-2 text-sm font-medium transition-all duration-200 active:scale-95 hover:text-black dark:hover:text-white",
                 isActive ? "text-black dark:text-white" : "text-stone-500 dark:text-stone-400"
               )}
             >
               {isActive && (
                 <motion.div
                   layoutId="nav-pill"
-                  className="absolute inset-0 bg-white/50 dark:bg-white/10 rounded-full shadow-sm backdrop-blur-sm"
+                  className="absolute inset-0 bg-white/70 dark:bg-white/20 rounded-full shadow-[0_1px_2px_rgba(0,0,0,0.1),inset_0_1px_0_0_rgba(255,255,255,0.6)] backdrop-blur-sm"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}

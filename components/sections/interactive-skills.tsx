@@ -39,14 +39,20 @@ export const getAllSkillExperience = (skill: string) => {
 }
 
 export function InteractiveSkills() {
-    const [selectedSkill, setSelectedSkill] = useState<string | null>(null)
-    const detailsRef = useRef<HTMLDivElement>(null)
+
 
     const categories = Object.entries(SKILLS)
+    // Flatten skills to get the first one for default selection
+    const allSkills = categories.flatMap(([, skills]) => skills)
+    const [selectedSkill, setSelectedSkill] = useState<string | null>(allSkills[0])
+    const detailsRef = useRef<HTMLDivElement>(null)
+
 
     const handleSkillClick = (skill: string) => {
         if (selectedSkill === skill) {
-            setSelectedSkill(null)
+            // Keep at least one selected or allow deselect? User asked for no veil, so keeping one selected is safer.
+            // But let's allow re-clicking to do nothing, preventing closure.
+            return
         } else {
             setSelectedSkill(skill)
             // Small delay to allow state update and DOM render
@@ -79,10 +85,10 @@ export function InteractiveSkills() {
                                             key={skill}
                                             onClick={() => handleSkillClick(skill)}
                                             className={cn(
-                                                "px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 border",
+                                                "px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 border shadow-sm",
                                                 isSelected
                                                     ? "bg-neutral-900 text-white border-neutral-900 dark:bg-white dark:text-black dark:border-white shadow-md scale-105"
-                                                    : "bg-white text-neutral-600 border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:bg-neutral-950 dark:text-neutral-400 dark:border-neutral-800 dark:hover:border-neutral-700"
+                                                    : "bg-white text-neutral-600 border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:bg-neutral-950 dark:text-neutral-400 dark:border-neutral-800 dark:hover:border-neutral-700 hover:shadow-glow"
                                             )}
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}

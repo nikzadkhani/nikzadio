@@ -10,8 +10,11 @@ export default function Page() {
   return (
     <section>
 
-      <GlassCard intensity="low" className="p-8 mb-12 flex flex-col-reverse md:flex-row justify-between items-center gap-8">
-        <div className="flex flex-col max-w-lg">
+      <GlassCard
+        intensity="low"
+        className="relative overflow-visible p-8 pt-32 md:pt-12 md:pr-48 flex flex-col md:flex-row items-center md:items-start gap-8 mb-12"
+      >
+        <div className="flex flex-col max-w-lg relative z-10 text-center md:text-left">
           <h1 className="mb-6 text-5xl font-serif font-medium tracking-tight text-black dark:text-white italic">
             Nikzad Khani
           </h1>
@@ -22,14 +25,15 @@ export default function Page() {
             B.A. Computer Science, Boston University '21
           </p>
         </div>
-        <div className="shrink-0 relative">
-          <div className="absolute inset-0 bg-gradient-to-tr from-blue-400 to-purple-400 rounded-2xl blur-xl opacity-50 dark:opacity-70 animate-pulse" />
+
+        {/* Floating Identity: Top-Center on Mobile, Top-Right Layout on Desktop */}
+        <div className="absolute top-0 left-1/2 md:left-auto md:right-8 -translate-x-1/2 md:translate-x-1/2 -translate-y-1/2 w-[180px] h-[180px]">
+          <div className="absolute inset-0 bg-gradient-to-tr from-blue-400 to-purple-400 rounded-[2rem] blur-xl opacity-50 dark:opacity-70 animate-pulse delay-1000" />
           <Image
             src="/me.jpg"
             alt="Nikzad Khani"
-            width={180}
-            height={180}
-            className="relative rounded-2xl grayscale hover:grayscale-0 transition-all duration-700 ease-in-out object-cover shadow-2xl rotate-3 hover:rotate-0 border-2 border-white/20"
+            fill
+            className="rounded-[2rem] transition-all duration-700 ease-in-out object-cover shadow-2xl border-4 border-white/10 ring-1 ring-white/20"
             priority
           />
         </div>
