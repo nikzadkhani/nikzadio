@@ -20,6 +20,7 @@ export function ThemeToggle() {
             className="p-2 transition-colors hover:text-sage-700 dark:hover:text-sage-300"
             onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
             aria-label="Toggle Dark Mode"
+            data-name="theme-toggle"
         >
             {resolvedTheme === 'dark' ? (
                 <svg
