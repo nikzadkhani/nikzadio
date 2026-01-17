@@ -7,7 +7,7 @@ import { Sidebar } from '@/components/layout/sidebar'
 import { Navbar } from '@/components/layout/nav'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import Footer from '@/components/layout/footer'
+
 import { baseUrl } from './sitemap'
 import { ThemeProvider } from '@/components/layout/theme-provider'
 import { JsonLd } from '@/components/seo/json-ld'
@@ -87,7 +87,7 @@ export default function RootLayout({
       <body className="antialiased text-stone-800 dark:text-stone-200 bg-stone-50 dark:bg-stone-900 transition-colors duration-300">
         <JsonLd />
         <div className="fixed inset-0 z-0 pointer-events-none">
-          <div className="bg-noise" />
+          <div className="bg-noise dark:hidden" />
           {/* Primary Orb - Top Left */}
           <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-purple-400/20 rounded-full blur-[120px] animate-liquid mix-blend-multiply dark:mix-blend-screen" />
           {/* Secondary Orb - Bottom Right */}
@@ -112,7 +112,7 @@ export default function RootLayout({
               </div>
 
               {children}
-              <Footer />
+
               <Analytics />
               <SpeedInsights />
             </main>

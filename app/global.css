@@ -126,6 +126,14 @@
 
 html {
   min-width: 360px;
+  scrollbar-gutter: stable;
+}
+
+/* Fallback for browsers that don't support scrollbar-gutter (e.g. Safari < 17) */
+@supports not (scrollbar-gutter: stable) {
+  html {
+    overflow-y: scroll;
+  }
 }
 
 .prose .anchor {

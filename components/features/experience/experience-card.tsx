@@ -11,7 +11,7 @@ interface ExperienceCardProps {
 
 export function ExperienceCard({ company, roles, isLatest = false }: ExperienceCardProps) {
     return (
-        <GlassCard className="p-6 group relative overflow-visible" intensity="high">
+        <GlassCard className="p-6 pr-10 group relative overflow-visible" intensity="high" data-name="experience-card">
             {/* Company Header */}
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4 border-b border-stone-200 dark:border-stone-800/50 pb-4">
                 <h3 className="font-medium text-lg text-stone-900 dark:text-stone-100">{company}</h3>

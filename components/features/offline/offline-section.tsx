@@ -3,10 +3,10 @@ import { GlassCard } from '@/components/ui/glass-card'
 
 export function Offline() {
     return (
-        <section className="mb-16">
+        <section className="mb-16" data-name="offline-section">
 
 
-            <GlassCard intensity="high" className="p-8">
+            <GlassCard intensity="high" className="p-8 pr-12" data-name="offline-card">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="flex flex-col space-y-8">
                         {/* Coffee */}

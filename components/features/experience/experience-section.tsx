@@ -19,7 +19,7 @@ export function Experience() {
 
 
     return (
-        <section className="mb-4 relative z-10">
+        <section className="mb-4 relative z-10" data-name="experience-section">
             <h2 className="mb-4 text-xl font-semibold tracking-tighter ml-4 text-stone-800 dark:text-stone-200">Experience</h2>
 
             <div className="flex flex-col gap-4">

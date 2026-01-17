@@ -41,7 +41,15 @@ export const getAllSkillExperience = (skill: string) => {
 export function InteractiveSkills() {
 
 
-    const categories = Object.entries(SKILLS)
+    const categories = Object.entries(SKILLS).map(([category, skills]) => {
+        // Sort skills by years of experience (descending)
+        const sortedSkills = [...skills].sort((a, b) => {
+            const yearsA = getAllSkillExperience(a).totalYears
+            const yearsB = getAllSkillExperience(b).totalYears
+            return yearsB - yearsA
+        })
+        return [category, sortedSkills] as const
+    })
     // Flatten skills to get the first one for default selection
     const allSkills = categories.flatMap(([, skills]) => skills)
     const [selectedSkill, setSelectedSkill] = useState<string | null>(allSkills[0])
@@ -69,7 +77,7 @@ export function InteractiveSkills() {
         : { relatedExperience: [], relatedPublications: [], totalYears: 0 }
 
     return (
-        <section className="mb-16">
+        <section className="mb-16" data-name="skills-section">
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
                 {/* Left Column: Skills Bubbles */}
@@ -85,14 +93,15 @@ export function InteractiveSkills() {
                                             key={skill}
                                             onClick={() => handleSkillClick(skill)}
                                             className={cn(
-                                                "px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 border shadow-sm",
+                                                "px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 border backdrop-blur-md",
                                                 isSelected
-                                                    ? "bg-neutral-900 text-white border-neutral-900 dark:bg-white dark:text-black dark:border-white shadow-md scale-105"
-                                                    : "bg-white text-neutral-600 border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:bg-neutral-950 dark:text-neutral-400 dark:border-neutral-800 dark:hover:border-neutral-700 hover:shadow-glow"
+                                                    ? "bg-black/10 dark:bg-white/20 text-black dark:text-white border-black/20 dark:border-white/30 shadow-[0_0_15px_rgba(255,255,255,0.3)] dark:shadow-[0_0_15px_rgba(255,255,255,0.3)] scale-105"
+                                                    : "bg-white/50 dark:bg-white/5 text-neutral-600 dark:text-neutral-400 border-black/5 dark:border-white/10 hover:border-black/20 dark:hover:border-white/30 hover:bg-white/80 dark:hover:bg-white/15"
                                             )}
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                             layout
+                                            data-name="skill-button"
                                         >
                                             {skill}
                                         </motion.button>
@@ -106,7 +115,8 @@ export function InteractiveSkills() {
                 {/* Right Column: Details */}
                 <div
                     ref={detailsRef}
-                    className="lg:col-span-7 min-h-[400px] border-t lg:border-t-0 lg:border-l border-neutral-200 dark:border-neutral-800 pt-8 lg:pt-0 lg:pl-8"
+                    className="lg:col-span-7 min-h-[400px] border-t lg:border-t-0 lg:border-l border-neutral-200 dark:border-neutral-800 pt-8 lg:pt-0 lg:pl-8 lg:pr-12"
+                    data-name="skill-details-panel"
                 >
                     <AnimatePresence mode="wait">
                         {selectedSkill ? (

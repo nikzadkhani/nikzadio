@@ -4,11 +4,11 @@ import { GlassCard } from '@/components/ui/glass-card'
 
 export function Publications() {
     return (
-        <section className="mb-16 relative z-10">
+        <section className="mb-16 relative z-10" data-name="publications-section">
             <h2 className="mb-6 text-xl font-semibold tracking-tighter ml-4 text-stone-800 dark:text-stone-200">Publications</h2>
             <div className="space-y-6">
                 {PUBLICATIONS.map((pub, index) => (
-                    <GlassCard key={index} className="flex flex-col space-y-3 p-8" intensity="high">
+                    <GlassCard key={index} className="flex flex-col space-y-3 p-8 pr-12" intensity="high" data-name="publication-card">
                         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
                             <h3 className="font-medium text-lg text-stone-900 dark:text-stone-100">
                                 {pub.link ? (
