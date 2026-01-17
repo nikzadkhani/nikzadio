@@ -4,6 +4,7 @@ import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import { GlassCard } from '@/components/ui/glass-card'
 import { SKILLS, EXPERIENCE, PUBLICATIONS, Experience, Publication } from 'data/portfolio'
 import { formatDate } from 'utils/date'
 

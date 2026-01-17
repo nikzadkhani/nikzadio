@@ -5,20 +5,43 @@
 @theme {
   --font-serif: var(--font-serif);
 
-  --color-sage-50: #f4f7f4;
-  --color-sage-100: #e3ebe3;
-  --color-sage-200: #c5d8c5;
-  --color-sage-300: #9ebf9e;
-  --color-sage-400: #78a178;
-  --color-sage-500: #5b855b;
-  --color-sage-600: #466846;
-  --color-sage-700: #3a533a;
-  --color-sage-800: #314231;
-  --color-sage-700: #3a533a;
-  --color-sage-800: #314231;
-  --color-sage-900: #293629;
+  /* Liquid Glass Palette */
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-surface: rgba(255, 255, 255, 0.1);
+  --glass-highlight: rgba(255, 255, 255, 0.4);
+  --glass-shadow: rgba(0, 0, 0, 0.1);
+
+  --liquid-accent-1: #60a5fa;
+  /* Blue-400 */
+  --liquid-accent-2: #c084fc;
+  /* Purple-400 */
+  --liquid-accent-3: #2dd4bf;
+  /* Teal-400 */
 
   --animate-shimmer: shimmer 2s linear infinite;
+  --animate-liquid: liquid-flow 20s ease infinite;
+}
+
+@keyframes liquid-flow {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(10%, 10%) rotate(5deg);
+  }
+
+  50% {
+    transform: translate(-5%, 20%) rotate(-5deg);
+  }
+
+  75% {
+    transform: translate(-10%, -5%) rotate(2deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
 }
 
 

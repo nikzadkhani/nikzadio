@@ -63,9 +63,15 @@ export default function RootLayout({
     //   playfair.variable
     // )}
     >
-      <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto text-stone-800 bg-stone-50 dark:text-stone-200 dark:bg-stone-900">
+      <body className="antialiased text-stone-800 dark:text-stone-200 bg-stone-50 dark:bg-stone-900 transition-colors duration-300">
+        <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+          <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] opacity-30 dark:opacity-20 animate-liquid
+            bg-[radial-gradient(circle_at_center,var(--liquid-accent-1),transparent_50%),radial-gradient(circle_at_center,var(--liquid-accent-2),transparent_50%),radial-gradient(circle_at_center,var(--liquid-accent-3),transparent_50%)]
+            [background-size:50%_50%,50%_50%,50%_50%] [background-position:0_0,100%_0,50%_100%] [filter:blur(60px)]"
+          />
+        </div>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+          <main className="flex-auto min-w-0 flex flex-col px-2 md:px-0 max-w-xl mx-4 mt-8 lg:mx-auto relative z-10">
             <Navbar />
             {children}
             <Footer />

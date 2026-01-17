@@ -1,8 +1,8 @@
 import { Experience } from '@/components/sections/experience'
 import { Education } from '@/components/sections/education'
 import { Publications } from '@/components/sections/publications'
-import { Skills } from '@/components/sections/skills'
 import type { Metadata } from 'next'
+import { GlassCard } from '@/components/ui/glass-card'
 
 export const metadata: Metadata = {
     title: 'Resume',
@@ -11,13 +11,13 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
     return (
-        <section>
-            <div className="mb-8 flex flex-col-reverse md:flex-row justify-between items-start md:items-center">
+        <section className="space-y-8 pb-20">
+            <GlassCard className="p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h1 className="text-2xl font-semibold tracking-tighter">
+                    <h1 className="text-3xl font-bold tracking-tight text-black dark:text-white mb-2">
                         Nikzad Khani
                     </h1>
-                    <p className="text-neutral-700 dark:text-neutral-300">
+                    <p className="text-stone-600 dark:text-stone-300 font-medium">
                         Senior Software Engineer at Verily
                     </p>
                 </div>
@@ -25,7 +25,7 @@ export default function ResumePage() {
                 <a
                     href="/Nikzad-Khani-Resume.pdf"
                     download
-                    className="mb-4 md:mb-0 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-neutral-900 hover:bg-neutral-800 dark:bg-neutral-100 dark:text-black dark:hover:bg-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-500 transition-colors"
+                    className="inline-flex items-center px-6 py-2.5 text-sm font-medium rounded-full text-white bg-black hover:bg-stone-800 dark:bg-white dark:text-black dark:hover:bg-stone-200 transition-all shadow-lg hover:shadow-xl active:scale-95"
                 >
                     <svg
                         className="-ml-1 mr-2 h-4 w-4"
@@ -38,17 +38,27 @@ export default function ResumePage() {
                     </svg>
                     Download PDF
                 </a>
-            </div>
+            </GlassCard>
 
-            <div className="prose prose-neutral dark:prose-invert max-w-none">
-                <p className="mb-8 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+            <GlassCard intensity="low" className="p-8">
+                <p className="text-lg text-stone-700 dark:text-stone-300 leading-relaxed font-serif italic">
                     Senior Software Engineer at Verily in Boston, MA. I specialize in building scalable AI-driven applications and robust data pipelines using Go, Python, and cloud-native technologies.
                 </p>
+            </GlassCard>
 
-                <Experience />
-                <Education />
-                <Publications />
-                <Skills />
+            <div className="grid grid-cols-1 gap-8">
+                <GlassCard className="p-8">
+                    <Experience />
+                </GlassCard>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <GlassCard className="p-8">
+                        <Education />
+                    </GlassCard>
+                    <GlassCard className="p-8">
+                        <Publications />
+                    </GlassCard>
+                </div>
             </div>
         </section>
     )
