@@ -163,15 +163,15 @@ export function InteractiveSkills() {
                                                 transition={{ delay: idx * 0.1 }}
                                                 className="bg-neutral-50 dark:bg-neutral-900/50 p-4 rounded-lg border border-neutral-100 dark:border-neutral-800"
                                             >
-                                                <div className="flex justify-between items-start mb-2">
+                                                <div className="flex justify-between items-baseline gap-4 mb-2">
                                                     <div>
-                                                        <div className="font-medium text-neutral-900 dark:text-neutral-100">{exp.title}</div>
+                                                        <div className="font-medium text-neutral-900 dark:text-neutral-100 leading-tight">{exp.title}</div>
                                                         <div className="text-sm text-neutral-500">{exp.company}</div>
                                                     </div>
-                                                    <div className="text-xs font-mono text-neutral-400">
-                                                        <span className="whitespace-nowrap">{formatDate(exp.start)}</span>
+                                                    <div className="text-xs font-mono text-neutral-400 shrink-0 whitespace-nowrap text-right">
+                                                        <span>{formatDate(exp.start)}</span>
                                                         {' - '}
-                                                        <span className="whitespace-nowrap">{exp.end ? formatDate(exp.end) : 'Present'}</span>
+                                                        <span>{exp.end ? formatDate(exp.end) : 'Present'}</span>
                                                     </div>
                                                 </div>
                                             </motion.div>
@@ -185,12 +185,12 @@ export function InteractiveSkills() {
                                                 transition={{ delay: (relatedExperience.length + idx) * 0.1 }}
                                                 className="bg-neutral-50 dark:bg-neutral-900/50 p-4 rounded-lg border border-neutral-100 dark:border-neutral-800"
                                             >
-                                                <div className="flex justify-between items-start mb-2">
+                                                <div className="flex justify-between items-baseline gap-4 mb-2">
                                                     <div>
-                                                        <div className="font-medium text-neutral-900 dark:text-neutral-100">{pub.title}</div>
+                                                        <div className="font-medium text-neutral-900 dark:text-neutral-100 leading-tight">{pub.title}</div>
                                                         <div className="text-sm text-neutral-500">Publication • {pub.conference}</div>
                                                     </div>
-                                                    <div className="text-xs font-mono text-neutral-400">
+                                                    <div className="text-xs font-mono text-neutral-400 shrink-0 whitespace-nowrap text-right">
                                                         {pub.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
                                                     </div>
                                                 </div>
