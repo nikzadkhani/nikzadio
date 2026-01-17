@@ -4,9 +4,7 @@ import { GlassCard } from '@/components/ui/glass-card'
 export function Offline() {
     return (
         <section className="mb-16">
-            <h2 className="mb-8 text-xl font-heading font-serif italic text-stone-600 dark:text-stone-400">
-                offline
-            </h2>
+
 
             <GlassCard intensity="high" className="p-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

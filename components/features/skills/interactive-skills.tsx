@@ -71,7 +71,7 @@ export function InteractiveSkills() {
     return (
         <section className="mb-16">
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
                 {/* Left Column: Skills Bubbles */}
                 <div className="lg:col-span-5 space-y-6">
                     {categories.map(([category, items]) => (
@@ -119,7 +119,7 @@ export function InteractiveSkills() {
                                 className="space-y-6"
                             >
                                 <div className="flex items-baseline justify-between border-b border-neutral-200 dark:border-neutral-800 pb-4">
-                                    <h3 className="text-3xl font-bold tracking-tight">{selectedSkill}</h3>
+                                    <h3 id={selectedSkill} className="text-3xl font-bold tracking-tight scroll-mt-24">{selectedSkill}</h3>
                                     <span className="text-lg text-neutral-500 font-mono">
                                         {totalYears.toFixed(1)}+ Years
                                     </span>

@@ -1,25 +1,14 @@
 "use client";
 
-import { Experience } from '@/components/sections/experience'
-import { Education } from '@/components/sections/education'
-import { Publications } from '@/components/sections/publications'
+import { Experience } from '@/components/features/experience/experience-section'
+import { Education } from '@/components/features/education/education-section'
+import { Publications } from '@/components/features/publications/publications-section'
 import { GlassCard } from '@/components/ui/glass-card'
 import { motion } from 'framer-motion'
 
 export default function ResumePage() {
     return (
         <section className="space-y-8 pb-20">
-            <GlassCard className="p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white/70 dark:bg-black/70">
-                <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-black dark:text-white mb-2">
-                        Nikzad Khani
-                    </h1>
-                    <p className="text-stone-600 dark:text-stone-300 font-medium">
-                        Senior Software Engineer at Verily
-                    </p>
-                </div>
-            </GlassCard>
-
             <motion.a
                 href="/Nikzad-Khani-Resume.pdf"
                 download
@@ -41,11 +30,7 @@ export default function ResumePage() {
                 </svg>
             </motion.a>
 
-            <GlassCard intensity="low" className="p-8">
-                <p className="text-lg text-stone-700 dark:text-stone-300 leading-relaxed font-serif italic">
-                    Senior Software Engineer at Verily in Boston, MA. I specialize in building scalable AI-driven applications and robust data pipelines using Go, Python, and cloud-native technologies.
-                </p>
-            </GlassCard>
+
 
             <div className="grid grid-cols-1 gap-16">
                 <Experience />
