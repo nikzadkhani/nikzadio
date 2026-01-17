@@ -1,12 +1,12 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { Offline } from './offline-section'
+import { Offline } from './offline'
 
 describe('Offline Section', () => {
-    // it('renders section title', () => {
-    //     render(<Offline />)
-    //     expect(screen.getByText('offline')).toBeDefined()
-    // })
+    it('renders section title', () => {
+        render(<Offline />)
+        expect(screen.getByText('offline')).toBeDefined()
+    })
 
     it('renders brewing section', () => {
         render(<Offline />)

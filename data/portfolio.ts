@@ -34,7 +34,7 @@ export const EXPERIENCE: Experience[] = [
             'Engineered and launched two distinct LLM-powered features for the Verily Me mobile application, enabling users to query personal healthcare data via natural language and receive AI-driven health coaching.',
             'Architected and deployed scalable, agentic AI models to production on Google Kubernetes Engine (GKE), leveraging GCP Vertex AI and LangGraph to serve live mobile traffic.',
         ],
-        skills: ['Python', 'Go', 'Typescript', 'React', 'GCP', 'Terraform', 'Kubernetes', 'LLMs', 'LangGraph', 'Vertex AI', 'Docker', 'Single SPA', 'Github CI/CD'],
+        skills: ['Python', 'Go', 'Typescript', 'React', 'GCP', 'Terraform', 'Kubernetes', 'LLMs', 'LangGraph', 'Vertex AI', 'Docker', 'Github CI/CD'],
     },
     {
         company: 'Verily',
@@ -47,7 +47,7 @@ export const EXPERIENCE: Experience[] = [
             'Developed a full-stack microservice using gRPC and React to provide embedded Looker dashboards, creating a self-service analytics portal for internal stakeholders.',
             'Automated the deployment of all GCP-based infrastructure using Terraform and configured GitHub workflows for CI/CD, enhancing deployment velocity and reliability.',
         ],
-        skills: ['Python', 'Go', 'Typescript', 'React', 'GCP', 'Terraform', 'Kubernetes', 'Airflow', 'BigQuery', 'SQL', 'gRPC', 'Looker', 'Docker', 'LangGraph', 'Single SPA', 'Github CI/CD'],
+        skills: ['Python', 'Go', 'Typescript', 'React', 'GCP', 'Terraform', 'Airflow', 'BigQuery', 'SQL', 'gRPC', 'Looker', 'Docker', 'LangGraph', 'Github CI/CD'],
     },
     {
         company: 'PathAI',
@@ -59,7 +59,7 @@ export const EXPERIENCE: Experience[] = [
             'Developed and implemented full stack solutions using Vue.js for frontend and Django for backend, resulting in the successful release of a major software update deployed in AWS.',
             'Built infrastructure to manage ELT pipelines to aggregate data from APIs/databases to Snowflake data warehouse for business analytics.',
         ],
-        skills: ['Python', 'Vue.js', 'Typescript', 'Django', 'AWS', 'Terraform', 'Kubernetes', 'Snowflake', 'SQL', 'Docker', 'Gitlab CI/CD'],
+        skills: ['Python', 'Vue.js', 'Typescript', 'Django', 'AWS', 'Terraform', 'Snowflake', 'SQL', 'Docker', 'Gitlab CI/CD'],
     },
     {
         company: 'AI4ALL',
@@ -131,7 +131,6 @@ export const SKILLS = {
         'React',
         'Vue.js',
         'Django',
-        'Single SPA',
     ],
     'Cloud & Infrastructure': [
         'AWS',

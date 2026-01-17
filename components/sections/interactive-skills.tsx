@@ -4,7 +4,6 @@ import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-import { GlassCard } from '@/components/ui/glass-card'
 import { SKILLS, EXPERIENCE, PUBLICATIONS, Experience, Publication } from 'data/portfolio'
 import { formatDate } from 'utils/date'
 
@@ -39,28 +38,14 @@ export const getAllSkillExperience = (skill: string) => {
 }
 
 export function InteractiveSkills() {
-
-
-    const categories = Object.entries(SKILLS).map(([category, skills]) => {
-        // Sort skills by years of experience (descending)
-        const sortedSkills = [...skills].sort((a, b) => {
-            const yearsA = getAllSkillExperience(a).totalYears
-            const yearsB = getAllSkillExperience(b).totalYears
-            return yearsB - yearsA
-        })
-        return [category, sortedSkills] as const
-    })
-    // Flatten skills to get the first one for default selection
-    const allSkills = categories.flatMap(([, skills]) => skills)
-    const [selectedSkill, setSelectedSkill] = useState<string | null>(allSkills[0])
+    const [selectedSkill, setSelectedSkill] = useState<string | null>(null)
     const detailsRef = useRef<HTMLDivElement>(null)
 
+    const categories = Object.entries(SKILLS)
 
     const handleSkillClick = (skill: string) => {
         if (selectedSkill === skill) {
-            // Keep at least one selected or allow deselect? User asked for no veil, so keeping one selected is safer.
-            // But let's allow re-clicking to do nothing, preventing closure.
-            return
+            setSelectedSkill(null)
         } else {
             setSelectedSkill(skill)
             // Small delay to allow state update and DOM render
@@ -77,9 +62,9 @@ export function InteractiveSkills() {
         : { relatedExperience: [], relatedPublications: [], totalYears: 0 }
 
     return (
-        <section className="mb-16" data-name="skills-section">
+        <section className="mb-16">
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 {/* Left Column: Skills Bubbles */}
                 <div className="lg:col-span-5 space-y-6">
                     {categories.map(([category, items]) => (
@@ -93,15 +78,14 @@ export function InteractiveSkills() {
                                             key={skill}
                                             onClick={() => handleSkillClick(skill)}
                                             className={cn(
-                                                "px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 border backdrop-blur-md",
+                                                "px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 border",
                                                 isSelected
-                                                    ? "bg-black/10 dark:bg-white/20 text-black dark:text-white border-black/20 dark:border-white/30 shadow-[0_0_15px_rgba(255,255,255,0.3)] dark:shadow-[0_0_15px_rgba(255,255,255,0.3)] scale-105"
-                                                    : "bg-white/50 dark:bg-white/5 text-neutral-600 dark:text-neutral-400 border-black/5 dark:border-white/10 hover:border-black/20 dark:hover:border-white/30 hover:bg-white/80 dark:hover:bg-white/15"
+                                                    ? "bg-neutral-900 text-white border-neutral-900 dark:bg-white dark:text-black dark:border-white shadow-md scale-105"
+                                                    : "bg-white text-neutral-600 border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:bg-neutral-950 dark:text-neutral-400 dark:border-neutral-800 dark:hover:border-neutral-700"
                                             )}
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                             layout
-                                            data-name="skill-button"
                                         >
                                             {skill}
                                         </motion.button>
@@ -115,8 +99,7 @@ export function InteractiveSkills() {
                 {/* Right Column: Details */}
                 <div
                     ref={detailsRef}
-                    className="lg:col-span-7 min-h-[400px] border-t lg:border-t-0 lg:border-l border-neutral-200 dark:border-neutral-800 pt-8 lg:pt-0 lg:pl-8 lg:pr-12"
-                    data-name="skill-details-panel"
+                    className="lg:col-span-7 min-h-[400px] border-t lg:border-t-0 lg:border-l border-neutral-200 dark:border-neutral-800 pt-8 lg:pt-0 lg:pl-8"
                 >
                     <AnimatePresence mode="wait">
                         {selectedSkill ? (
@@ -129,7 +112,7 @@ export function InteractiveSkills() {
                                 className="space-y-6"
                             >
                                 <div className="flex items-baseline justify-between border-b border-neutral-200 dark:border-neutral-800 pb-4">
-                                    <h3 id={selectedSkill} className="text-3xl font-bold tracking-tight scroll-mt-24">{selectedSkill}</h3>
+                                    <h3 className="text-3xl font-bold tracking-tight">{selectedSkill}</h3>
                                     <span className="text-lg text-neutral-500 font-mono">
                                         {totalYears.toFixed(1)}+ Years
                                     </span>
