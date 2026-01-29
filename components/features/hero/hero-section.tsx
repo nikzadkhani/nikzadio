@@ -2,6 +2,7 @@
 
 
 import { motion, Variants } from "framer-motion";
+import { ConnectButton } from "@/components/ui/connect-button";
 
 export function HeroSection() {
     const container: Variants = {
@@ -54,6 +55,7 @@ export function HeroSection() {
                         <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                         <span className="relative">View Experience</span>
                     </a>
+                    <ConnectButton />
                     <a
                         href="mailto:hello@nikzad.io"
                         className="group relative inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-stone-100 border border-stone-200 dark:border-stone-700 rounded-full font-medium text-base sm:text-lg transition-all active:scale-95 w-full sm:w-auto overflow-hidden hover:border-stone-300 dark:hover:border-stone-600"

@@ -7,6 +7,7 @@ export const RESUME = Resume.fromJSON(resumeData);
 
 export interface Experience {
     company: string
+    tagline?: string
     title: string
     start: Date
     end?: Date
@@ -43,6 +44,7 @@ const CATEGORY_LABELS: Record<string, string> = {
 // Backward compatibility for existing components
 export const EXPERIENCE: Experience[] = RESUME.jobs.map(job => ({
     company: job.company,
+    tagline: job.tagline,
     title: job.title,
     start: new Date(job.start),
     end: job.end ? new Date(job.end) : undefined,

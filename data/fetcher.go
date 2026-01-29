@@ -1,3 +1,6 @@
+// Package data loads and caches resume data from an embedded TOML file.
+// It provides a singleton accessor pattern with thread-safe lazy initialization
+// using sync.RWMutex for efficient concurrent read access.
 package data
 
 import (

@@ -1,7 +1,3 @@
-name = "Nikzad Khani"
-title = "Senior Software Engineer"
-bio = "Senior Backend Engineer specializing in Go, Serverless, and Web Scraping. Currently engineering LLM-powered features for healthcare at Verily."
-
 [[jobs]]
 company = "Verily"
 tagline = "Alphabet's precision health subsidiary"
@@ -66,47 +62,3 @@ description = [
     "Developed a predictive model for the amount of noise in smartphone camera when given camera settings."
 ]
 skills = ["MATLAB", "Computer Vision"]
-
-[[education]]
-school = "Boston University"
-degree = "Bachelor of Arts in Computer Science"
-start = "2017-09-01"
-end = "2021-09-01"
-
-[[publications]]
-title = "An Exploration of Deep Reinforcement Learning Methods in Hungry Geese"
-conference = "ArXiv"
-date = "2021-09-01"
-description = [
-    "Explored the effectiveness of using Deep Q-Networks with various architectures in a stochastic multiplayer snake environment.",
-    "Showed how optimizations to feature engineering could make DQNs more effective, although they are outperformed by Proximal Policy Optimization-based methods."
-]
-skills = ["Python", "Reinforcement Learning", "PyTorch"]
-
-[[publications]]
-title = "Cultural and Geographical Influences on Image Translatability of Words across Languages"
-conference = "NAACL"
-date = "2021-06-01"
-description = [
-    "Developed two metrics to show when images could be useful for machine translation.",
-    "Concluded that when speakers of two languages share culture, images are more likely to be useful for machine translation compared to shared Geography or language families."
-]
-skills = ["Python", "NLP", "Data Analysis"]
-
-[[skills]]
-category = "LANGUAGES"
-names = ["Python", "Go", "Typescript"]
-
-[[skills]]
-category = "FRONTEND_FRAMEWORKS"
-names = ["React", "Vue.js", "Django", "Single SPA"]
-
-[[skills]]
-category = "CLOUD_INFRASTRUCTURE"
-names = ["AWS", "GCP", "Kubernetes", "Docker", "Terraform", "Github CI/CD", "Gitlab CI/CD"]
-
-[[skills]]
-category = "DATA_AI"
-names = ["PyTorch", "Tensorflow", "Pandas", "LangGraph"]
-
-

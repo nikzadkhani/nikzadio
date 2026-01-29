@@ -1,0 +1,15 @@
+[[skills]]
+category = "LANGUAGES"
+names = ["Python", "Go", "Typescript"]
+
+[[skills]]
+category = "FRONTEND_FRAMEWORKS"
+names = ["React", "Vue.js", "Django", "Single SPA"]
+
+[[skills]]
+category = "CLOUD_INFRASTRUCTURE"
+names = ["AWS", "GCP", "Kubernetes", "Docker", "Terraform", "Github CI/CD", "Gitlab CI/CD"]
+
+[[skills]]
+category = "DATA_AI"
+names = ["PyTorch", "Tensorflow", "Pandas", "LangGraph"]

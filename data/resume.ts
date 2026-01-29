@@ -91,8 +91,9 @@ export interface Publication {
 }
 
 export interface Job {
-  company: string;
   title: string;
+  company: string;
+  tagline: string;
   start: string;
   end: string;
   location: string;
@@ -486,12 +487,15 @@ export const Publication: MessageFns<Publication> = {
 };
 
 function createBaseJob(): Job {
-  return { company: "", title: "", start: "", end: "", location: "", description: [], skills: [] };
+  return { company: "", tagline: "", title: "", start: "", end: "", location: "", description: [], skills: [] };
 }
 
 export const Job: MessageFns<Job> = {
   encode(message: Job, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.company !== "") {
+    }
+    if (message.tagline !== "") {
+      obj.tagline = message.tagline;
       writer.uint32(10).string(message.company);
     }
     if (message.title !== "") {
@@ -590,6 +594,7 @@ export const Job: MessageFns<Job> = {
   fromJSON(object: any): Job {
     return {
       company: isSet(object.company) ? globalThis.String(object.company) : "",
+      tagline: isSet(object.tagline) ? globalThis.String(object.tagline) : "",
       title: isSet(object.title) ? globalThis.String(object.title) : "",
       start: isSet(object.start) ? globalThis.String(object.start) : "",
       end: isSet(object.end) ? globalThis.String(object.end) : "",
@@ -604,6 +609,9 @@ export const Job: MessageFns<Job> = {
   toJSON(message: Job): unknown {
     const obj: any = {};
     if (message.company !== "") {
+    }
+    if (message.tagline !== "") {
+      obj.tagline = message.tagline;
       obj.company = message.company;
     }
     if (message.title !== "") {
@@ -633,6 +641,7 @@ export const Job: MessageFns<Job> = {
   fromPartial<I extends Exact<DeepPartial<Job>, I>>(object: I): Job {
     const message = createBaseJob();
     message.company = object.company ?? "";
+    message.tagline = object.tagline ?? "";
     message.title = object.title ?? "";
     message.start = object.start ?? "";
     message.end = object.end ?? "";

@@ -17,11 +17,12 @@ export function Experience() {
         } else {
             acc.push({
                 company: job.company,
+                tagline: job.tagline,
                 roles: [job],
             });
         }
         return acc;
-    }, [] as { company: string; roles: typeof EXPERIENCE }[]);
+    }, [] as { company: string; tagline?: string; roles: typeof EXPERIENCE }[]);
 
     return (
         <section className="mb-32" data-name="experience-section" id="experience-section">
@@ -48,14 +49,21 @@ export function Experience() {
                                 onClick={() => setExpanded(isOpen ? null : index)}
                                 className="w-full flex items-center justify-between py-6 group"
                             >
-                                <h3 className={cn(
-                                    "text-2xl md:text-3xl font-bold tracking-tight transition-colors",
-                                    isOpen
-                                        ? "text-stone-900 dark:text-stone-100"
-                                        : "text-stone-400 dark:text-stone-600 group-hover:text-stone-700 dark:group-hover:text-stone-400"
-                                )}>
-                                    {group.company}
-                                </h3>
+                                <div className="flex flex-col items-start gap-0.5">
+                                    <h3 className={cn(
+                                        "text-2xl md:text-3xl font-bold tracking-tight transition-colors",
+                                        isOpen
+                                            ? "text-stone-900 dark:text-stone-100"
+                                            : "text-stone-400 dark:text-stone-600 group-hover:text-stone-700 dark:group-hover:text-stone-400"
+                                    )}>
+                                        {group.company}
+                                    </h3>
+                                    {group.tagline && (
+                                        <span className="text-xs text-stone-400 dark:text-stone-600">
+                                            {group.tagline}
+                                        </span>
+                                    )}
+                                </div>
 
                                 <span className="text-xs text-stone-400 font-mono uppercase tracking-wider">
                                     {isOpen ? '−' : '+'}
