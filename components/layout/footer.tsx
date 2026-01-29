@@ -30,7 +30,7 @@ export function Footer() {
                     <h3 className="uppercase tracking-widest text-xs font-semibold text-stone-900 dark:text-stone-100 mb-4">Connect</h3>
                     <div className="flex flex-col gap-2">
                         <a href="mailto:hello@nikzad.io" className="hover:text-stone-900 dark:hover:text-stone-100 transition-colors">hello@nikzad.io</a>
-                        <a href="https://github.com/nikzadio" target="_blank" className="hover:text-stone-900 dark:hover:text-stone-100 transition-colors">github.com/nikzadio</a>
+                        <a href="https://github.com/nikzadkhani" target="_blank" className="hover:text-stone-900 dark:hover:text-stone-100 transition-colors">github.com/nikzadkhani</a>
                         <a href="https://linkedin.com/in/nikzadkhani" target="_blank" className="hover:text-stone-900 dark:hover:text-stone-100 transition-colors">linkedin.com/in/nikzadkhani</a>
                     </div>
                 </div>

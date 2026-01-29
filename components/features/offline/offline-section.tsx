@@ -1,17 +1,16 @@
-import Image from 'next/image'
-import { GlassCard } from '@/components/ui/glass-card'
+import { StoneCard } from '@/components/ui/stone-card'
 
 export function Offline() {
     return (
         <section className="mb-16" data-name="offline-section">
 
 
-            <GlassCard intensity="high" className="p-8 pr-12" data-name="offline-card">
+            <StoneCard intensity="medium" className="p-8 pr-12" data-name="offline-card">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="flex flex-col space-y-8">
                         {/* Coffee */}
                         <div className="flex flex-col space-y-2">
-                            <span className="text-xs font-mono text-sage-700 dark:text-sage-400 uppercase tracking-widest">
+                            <span className="text-xs font-mono text-stone-500 dark:text-stone-400 uppercase tracking-widest">
                                 Brewing
                             </span>
                             <p className="text-stone-700 dark:text-stone-300">
@@ -21,7 +20,7 @@ export function Offline() {
 
                         {/* Music */}
                         <div className="flex flex-col space-y-2">
-                            <span className="text-xs font-mono text-sage-700 dark:text-sage-400 uppercase tracking-widest">
+                            <span className="text-xs font-mono text-stone-500 dark:text-stone-400 uppercase tracking-widest">
                                 On Rotation
                             </span>
                             <a
@@ -37,7 +36,7 @@ export function Offline() {
                                     </div>
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="font-medium text-sm group-hover:text-sage-700 dark:group-hover:text-sage-300 transition-colors">jazz is for ordinary people</span>
+                                    <span className="font-medium text-sm group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">jazz is for ordinary people</span>
                                     <span className="text-xs text-stone-500">Berlioz</span>
                                 </div>
                             </a>
@@ -46,7 +45,7 @@ export function Offline() {
 
                     {/* Kitchen */}
                     <div className="flex flex-col space-y-4">
-                        <span className="text-xs font-mono text-sage-700 dark:text-sage-400 uppercase tracking-widest">
+                        <span className="text-xs font-mono text-stone-500 dark:text-stone-400 uppercase tracking-widest">
                             The Kitchen Lab
                         </span>
                         <div className="flex flex-col space-y-2 text-sm text-stone-600 dark:text-stone-400">
@@ -62,7 +61,7 @@ export function Offline() {
                         </div>
                     </div>
                 </div>
-            </GlassCard>
+            </StoneCard>
         </section>
     )
 }

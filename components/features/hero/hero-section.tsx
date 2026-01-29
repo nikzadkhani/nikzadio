@@ -1,7 +1,7 @@
 "use client";
 
+
 import { motion, Variants } from "framer-motion";
-import { MagneticButton } from "@/components/ui/magnetic-button";
 
 export function HeroSection() {
     const container: Variants = {
@@ -46,23 +46,21 @@ export function HeroSection() {
                     Building scalable AI-driven applications and robust data pipelines with <span className="text-stone-900 dark:text-stone-100 font-semibold">Go</span> and <span className="text-stone-900 dark:text-stone-100 font-semibold">Python</span>.
                 </motion.p>
 
-                <motion.div variants={item} className="flex flex-wrap gap-4 pt-4">
-                    <MagneticButton>
-                        <a
-                            href="/resume"
-                            className="inline-flex items-center justify-center px-8 py-4 bg-stone-900 dark:bg-stone-100 text-white dark:text-stone-900 rounded-full font-medium text-lg transition-transform active:scale-95"
-                        >
-                            View Experience
-                        </a>
-                    </MagneticButton>
-                    <MagneticButton>
-                        <a
-                            href="mailto:hello@nikzad.io"
-                            className="inline-flex items-center justify-center px-8 py-4 bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-stone-100 border border-stone-200 dark:border-stone-700 rounded-full font-medium text-lg hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors active:scale-95"
-                        >
-                            Contact Me
-                        </a>
-                    </MagneticButton>
+                <motion.div variants={item} className="flex flex-col sm:flex-row flex-wrap gap-3 pt-4">
+                    <a
+                        href="#experience"
+                        className="group relative inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 bg-stone-900 dark:bg-stone-100 text-white dark:text-stone-900 rounded-full font-medium text-base sm:text-lg transition-transform active:scale-95 w-full sm:w-auto overflow-hidden"
+                    >
+                        <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                        <span className="relative">View Experience</span>
+                    </a>
+                    <a
+                        href="mailto:hello@nikzad.io"
+                        className="group relative inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-stone-100 border border-stone-200 dark:border-stone-700 rounded-full font-medium text-base sm:text-lg transition-all active:scale-95 w-full sm:w-auto overflow-hidden hover:border-stone-300 dark:hover:border-stone-600"
+                    >
+                        <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-stone-200/40 dark:via-stone-600/40 to-transparent" />
+                        <span className="relative">Contact Me</span>
+                    </a>
                 </motion.div>
             </motion.div>
         </section>

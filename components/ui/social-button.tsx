@@ -24,7 +24,7 @@ export function SocialButton({
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
-                "group/btn relative flex items-center gap-3 px-2 py-1.5 rounded-lg border border-transparent hover:bg-white/5 hover:backdrop-blur-md hover:ring-1 hover:ring-white/20 hover:shadow-sm hover:scale-105 transition-all duration-300 ease-out",
+                "group/btn relative flex items-center gap-3 px-2 py-1.5 rounded-lg border border-transparent hover:bg-stone-100 dark:hover:bg-stone-800 hover:scale-105 transition-all duration-300 ease-out",
                 className
             )}
             aria-label={label}

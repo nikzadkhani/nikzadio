@@ -19,7 +19,7 @@ export function RoleItem({ role, isCurrentRole, showDateRange }: RoleItemProps) 
                         </p>
                         {isCurrentRole && (
                             <span className="px-2 py-0.5 text-[10px] uppercase tracking-wider font-semibold rounded-full transition-all duration-500 
-                                bg-emerald-500/10 dark:bg-emerald-400/10 backdrop-blur-md 
+                                bg-emerald-500/10 dark:bg-emerald-400/10
                                 border border-emerald-500/20 dark:border-emerald-400/20
                                 text-emerald-700 dark:text-emerald-300
                                 group-hover:bg-emerald-500/20 dark:group-hover:bg-emerald-400/20

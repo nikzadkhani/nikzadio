@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package resume;
+
+import "validate/validate.proto";
+
+option go_package = "github.com/nikzadkhani/nikzadio/data";
+
+message Resume {
+  string name = 1 [(validate.rules).string.min_len = 1];
+  string title = 2 [(validate.rules).string.min_len = 1];
+  string bio = 3 [(validate.rules).string.min_len = 1];
+  repeated Job jobs = 4 [(validate.rules).repeated.min_items = 1];
+  repeated Education education = 5;
+  repeated SkillGroup skills = 6 [(validate.rules).repeated.min_items = 1];
+  repeated Publication publications = 7;
+}
+
+
+enum Category {
+  CATEGORY_UNSPECIFIED = 0;
+  LANGUAGES = 1;
+  FRONTEND_FRAMEWORKS = 2;
+  CLOUD_INFRASTRUCTURE = 3;
+  DATA_AI = 4;
+  TOOLS_OS = 5;
+}
+
+message SkillGroup {
+  Category category = 1;
+  repeated string names = 2;
+}
+
+
+message Publication {
+  string title = 1;
+  string conference = 2;
+  string date = 3;
+  repeated string description = 4;
+  string link = 5;
+  repeated string skills = 6;
+}
+
+
+message Job {
+  string company = 1;
+  string title = 2;
+  string start = 3;
+  string end = 4;
+  string location = 5;
+  repeated string description = 6;
+  repeated string skills = 7;
+}
+
+message Education {
+  string school = 1;
+  string degree = 2;
+  string start = 3;
+  string end = 4;
+}
+
+

@@ -1,0 +1,107 @@
+name = "Nikzad Khani"
+title = "Senior Software Engineer"
+bio = "Senior Backend Engineer specializing in Go, Serverless, and Web Scraping. Currently engineering LLM-powered features for healthcare at Verily."
+
+[[jobs]]
+company = "Verily"
+title = "Senior Software Engineer"
+start = "2025-05-01"
+location = "Boston, MA"
+description = [
+    "Engineered and launched two distinct LLM-powered features for the Verily Me mobile application, enabling users to query personal healthcare data via natural language.",
+    "Architected and deployed scalable, agentic AI models to production on Google Kubernetes Engine (GKE), leveraging GCP Vertex AI and LangGraph."
+]
+skills = ["Python", "Go", "Typescript", "React", "GCP", "Terraform", "Kubernetes", "LLMs", "LangGraph", "Vertex AI", "Docker", "Single SPA", "Github CI/CD"]
+
+[[jobs]]
+company = "Verily"
+title = "Software Engineer III"
+start = "2023-07-01"
+end = "2025-05-01"
+location = "Boston, MA"
+description = [
+    "Built and orchestrated robust data pipelines with Airflow, processing hundreds of thousands of FHIR records daily into BigQuery.",
+    "Developed a full-stack microservice using gRPC and React to provide embedded Looker dashboards.",
+    "Automated the deployment of all GCP-based infrastructure using Terraform and configured GitHub workflows for CI/CD."
+]
+skills = ["Python", "Go", "Typescript", "React", "GCP", "Terraform", "Kubernetes", "Airflow", "BigQuery", "SQL", "gRPC", "Looker", "Docker", "LangGraph", "Single SPA", "Github CI/CD"]
+
+[[jobs]]
+company = "PathAI"
+title = "Software Engineer I"
+start = "2021-12-01"
+end = "2023-06-01"
+location = "Boston, MA"
+description = [
+    "Developed and implemented full stack solutions using Vue.js for frontend and Django for backend.",
+    "Built infrastructure to manage ELT pipelines to aggregate data from APIs/databases to Snowflake data warehouse."
+]
+skills = ["Python", "Vue.js", "Typescript", "Django", "AWS", "Terraform", "Kubernetes", "Snowflake", "SQL", "Docker", "Gitlab CI/CD"]
+
+[[jobs]]
+company = "AI4ALL"
+title = "Researcher and Coordinator"
+start = "2020-07-01"
+end = "2020-08-01"
+location = "Boston, MA"
+description = [
+    "Contributed to adding additional up-sampling functionality to a custom modular parameter sharing neural network architecture in PyTorch.",
+    "Coordinated and taught AI classes using Jupyter notebooks."
+]
+skills = ["Python", "PyTorch", "Jupyter"]
+
+[[jobs]]
+company = "SenseTime 商汤科技"
+title = "Research Intern"
+start = "2018-06-01"
+end = "2018-08-01"
+location = "Shenzhen, China"
+description = [
+    "Collected data on Smartphone camera image quality as a function of smartphone camera settings.",
+    "Developed a predictive model for the amount of noise in smartphone camera when given camera settings."
+]
+skills = ["MATLAB", "Computer Vision"]
+
+[[education]]
+school = "Boston University"
+degree = "Bachelor of Arts in Computer Science"
+start = "2017-09-01"
+end = "2021-09-01"
+
+[[publications]]
+title = "An Exploration of Deep Reinforcement Learning Methods in Hungry Geese"
+conference = "ArXiv"
+date = "2021-09-01"
+description = [
+    "Explored the effectiveness of using Deep Q-Networks with various architectures in a stochastic multiplayer snake environment.",
+    "Showed how optimizations to feature engineering could make DQNs more effective, although they are outperformed by Proximal Policy Optimization-based methods."
+]
+skills = ["Python", "Reinforcement Learning", "PyTorch"]
+
+[[publications]]
+title = "Cultural and Geographical Influences on Image Translatability of Words across Languages"
+conference = "NAACL"
+date = "2021-06-01"
+description = [
+    "Developed two metrics to show when images could be useful for machine translation.",
+    "Concluded that when speakers of two languages share culture, images are more likely to be useful for machine translation compared to shared Geography or language families."
+]
+skills = ["Python", "NLP", "Data Analysis"]
+
+[[skills]]
+category = "LANGUAGES"
+names = ["Python", "Go", "Typescript"]
+
+[[skills]]
+category = "FRONTEND_FRAMEWORKS"
+names = ["React", "Vue.js", "Django", "Single SPA"]
+
+[[skills]]
+category = "CLOUD_INFRASTRUCTURE"
+names = ["AWS", "GCP", "Kubernetes", "Docker", "Terraform", "Github CI/CD", "Gitlab CI/CD"]
+
+[[skills]]
+category = "DATA_AI"
+names = ["PyTorch", "Tensorflow", "Pandas", "LangGraph"]
+
+
