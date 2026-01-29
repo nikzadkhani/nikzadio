@@ -1,50 +1,43 @@
-import { PUBLICATIONS } from 'data/portfolio'
-import { formatDate } from 'utils/date'
-import { GlassCard } from '@/components/ui/glass-card'
+"use client";
+import { PUBLICATIONS } from "data/portfolio";
+import { formatDate } from "utils/date";
 
 export function Publications() {
     return (
-        <section className="mb-16 relative z-10" data-name="publications-section">
-            <h2 className="mb-6 text-xl font-semibold tracking-tighter ml-4 text-stone-800 dark:text-stone-200">Publications</h2>
-            <div className="space-y-6">
-                {PUBLICATIONS.map((pub, index) => (
-                    <GlassCard key={index} className="flex flex-col space-y-3 p-8 pr-12" intensity="high" data-name="publication-card">
-                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
-                            <h3 className="font-medium text-lg text-stone-900 dark:text-stone-100">
+        <section className="mb-32">
+            <h2 className="text-sm font-semibold text-stone-900 dark:text-stone-100 uppercase tracking-widest mb-12 ml-1">Publications</h2>
+            <div className="space-y-12">
+                {PUBLICATIONS.map((pub, idx) => (
+                    <div key={idx} className="flex flex-col border-t border-stone-200 dark:border-stone-800 pt-6 group">
+
+                        <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4">
+                            <h3 className="text-2xl font-bold text-stone-900 dark:text-stone-100 leading-tight max-w-2xl group-hover:underline decoration-1 underline-offset-4">
                                 {pub.link ? (
-                                    <a
-                                        href={pub.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="hover:text-blue-500 transition-colors"
-                                    >
-                                        {pub.title}
-                                    </a>
+                                    <a href={pub.link} target="_blank" rel="noopener noreferrer">{pub.title}</a>
                                 ) : (
                                     pub.title
                                 )}
                             </h3>
-                            <span className="text-sm text-neutral-600 dark:text-neutral-400 tabular-nums whitespace-nowrap shrink-0">
+                            <div className="font-mono text-stone-400 text-sm mt-2 md:mt-0 whitespace-nowrap">
                                 {formatDate(pub.date)}
-                            </span>
+                            </div>
                         </div>
-                        <div className="text-neutral-700 dark:text-neutral-300">
-                            <p className="font-medium text-sm text-blue-600 dark:text-blue-400 mb-2">{pub.conference}</p>
-                            <div className="text-sm leading-relaxed text-stone-600 dark:text-stone-300">
+
+                        <div className="space-y-4 max-w-3xl">
+                            <div className="text-sm font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-wider">{pub.conference}</div>
+                            <div className="text-lg text-stone-600 dark:text-stone-300 leading-relaxed">
                                 {Array.isArray(pub.description) ? (
-                                    <ul className="list-disc list-outside ml-4 space-y-2">
-                                        {pub.description.map((desc, i) => (
-                                            <li key={i}>{desc}</li>
-                                        ))}
+                                    <ul className="list-disc list-outside ml-5 space-y-2">
+                                        {pub.description.map((desc, i) => <li key={i}>{desc}</li>)}
                                     </ul>
                                 ) : (
                                     <p>{pub.description}</p>
                                 )}
                             </div>
                         </div>
-                    </GlassCard>
+                    </div>
                 ))}
             </div>
         </section>
-    )
+    );
 }
