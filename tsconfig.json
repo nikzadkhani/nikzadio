@@ -21,6 +21,39 @@
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/features/*": [
+        "components/features/*"
+      ],
+      "@/features": [
+        "components/features"
+      ],
+      "@/ui/*": [
+        "components/ui/*"
+      ],
+      "@/ui": [
+        "components/ui"
+      ],
+      "@/layout/*": [
+        "components/layout/*"
+      ],
+      "@/layout": [
+        "components/layout"
+      ],
+      "@/utils/*": [
+        "utils/*"
+      ],
+      "@/utils": [
+        "utils"
+      ],
+      "@/data/*": [
+        "data/*"
+      ],
+      "@/app/*": [
+        "app/*"
       ]
     },
     "incremental": true,

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react'
-import { ConnectionModal } from '@/components/features/connect/connection-modal'
+import { ConnectionModal } from '@/features/connect'
 
 export function ConnectButton() {
     const [isModalOpen, setIsModalOpen] = useState(false)

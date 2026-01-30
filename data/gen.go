@@ -1,6 +1,6 @@
 package data
 
-//go:generate protoc --proto_path=../proto --plugin=/Users/nikzadkhani/go/bin/protoc-gen-go --plugin=/Users/nikzadkhani/go/bin/protoc-gen-validate --go_out=. --go_opt=paths=source_relative --validate_out=lang=go,paths=source_relative:. ../proto/resume.proto
+//go:generate protoc --proto_path=../proto --go_out=. --go_opt=paths=source_relative --validate_out=lang=go,paths=source_relative:. ../proto/resume.proto
 //go:generate protoc --proto_path=../proto --plugin=../node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=. --ts_proto_opt=esModuleInterop=true ../proto/resume.proto
 
 //go:generate node ../scripts/toml-to-json.js

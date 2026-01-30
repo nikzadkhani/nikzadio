@@ -2,7 +2,7 @@
 
 
 import { motion, Variants } from "framer-motion";
-import { ConnectButton } from "@/components/ui/connect-button";
+import { ConnectButton } from "@/ui";
 
 export function HeroSection() {
     const container: Variants = {

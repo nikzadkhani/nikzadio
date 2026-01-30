@@ -1,6 +1,6 @@
-import { StoneCard } from '@/components/ui/stone-card'
+import { StoneCard } from '@/ui'
 
-export function Offline() {
+export function OfflineSection() {
     return (
         <section className="mb-16" data-name="offline-section">
 

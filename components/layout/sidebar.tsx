@@ -4,8 +4,7 @@ import { cn } from '@/utils/cn';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { StoneCard } from '@/components/ui/stone-card';
-import { SocialButton, GithubIcon, LinkedinIcon, MailIcon } from '@/components/ui/social-button';
+import { StoneCard, SocialButton, GithubIcon, LinkedinIcon, MailIcon } from '@/ui';
 
 const navItems = {
     '/': { name: 'Home' },

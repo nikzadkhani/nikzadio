@@ -4,7 +4,7 @@ import { formatDate } from "utils/date";
 
 import { motion } from "framer-motion";
 
-export function Publications() {
+export function PublicationsSection() {
     return (
         <section className="mb-32">
             <h2 className="text-sm font-semibold text-stone-900 dark:text-stone-100 uppercase tracking-widest mb-12 ml-1">Publications</h2>

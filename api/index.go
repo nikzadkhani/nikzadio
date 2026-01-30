@@ -175,7 +175,7 @@ func registerPublicationsTool(s *server.MCPServer) {
 
 // Handler is the Vercel Serverless Function entrypoint
 func Handler(w http.ResponseWriter, r *http.Request) {
-	httpServer.ServeHTTP(w, r)
+	http.StripPrefix("/api", httpServer).ServeHTTP(w, r)
 }
 
 // detectEasterEgg checks if the request contains any easter egg trigger words

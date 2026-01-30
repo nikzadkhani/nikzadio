@@ -1,9 +1,9 @@
-import { HeroSection } from '@/components/features/hero/hero-section'
-import { InteractiveSkills } from '@/components/features/skills/interactive-skills'
-import { Experience } from '@/components/features/experience/experience-section'
-import { Education } from '@/components/features/education/education-section'
-import { Publications } from '@/components/features/publications/publications-section'
-import { Footer } from '@/components/layout/footer'
+import { HeroSection } from '@/features/hero'
+import { InteractiveSkills } from '@/features/skills'
+import { ExperienceSection } from '@/features/experience'
+import { EducationSection } from '@/features/education'
+import { PublicationsSection } from '@/features/publications'
+import { Footer } from '@/layout'
 
 export default function Page() {
   return (
@@ -15,15 +15,15 @@ export default function Page() {
       </div>
 
       <div id="experience" className="scroll-mt-32">
-        <Experience />
+        <ExperienceSection />
       </div>
 
       <div id="education" className="scroll-mt-32">
-        <Education />
+        <EducationSection />
       </div>
 
       <div id="publications" className="scroll-mt-32">
-        <Publications />
+        <PublicationsSection />
       </div>
 
       <div id="contact" className="scroll-mt-32">

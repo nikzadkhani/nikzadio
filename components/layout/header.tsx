@@ -3,7 +3,7 @@
 import { motion, useScroll, useMotionValueEvent, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { ThemeToggle } from "@/ui";
 import { usePathname } from "next/navigation";
 
 

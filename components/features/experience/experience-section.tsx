@@ -6,7 +6,7 @@ import { EXPERIENCE } from "data/portfolio";
 import { formatDate } from "utils/date";
 import { cn } from "@/utils/cn";
 
-export function Experience() {
+export function ExperienceSection() {
     const [expanded, setExpanded] = useState<number | null>(0); // Default open first
 
     // Grouping logic

@@ -4,7 +4,7 @@ import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-import { SpotlightCard } from '@/components/ui/spotlight-card'
+import { SpotlightCard } from '@/ui'
 import { SKILLS, EXPERIENCE, PUBLICATIONS } from 'data/portfolio'
 import { formatDate } from 'utils/date'
 

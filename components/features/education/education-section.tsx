@@ -3,7 +3,7 @@ import { EDUCATION } from "data/portfolio";
 
 import { motion } from "framer-motion";
 
-export function Education() {
+export function EducationSection() {
     return (
         <section className="mb-32" data-name="education-section">
             <h2 className="text-sm font-semibold text-stone-900 dark:text-stone-100 uppercase tracking-widest mb-8 ml-1">Education</h2>

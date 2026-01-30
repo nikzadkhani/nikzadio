@@ -1,6 +1,6 @@
 import { Experience } from 'data/portfolio'
 import { formatDate } from 'utils/date'
-import { StoneCard } from '@/components/ui/stone-card'
+import { StoneCard } from '@/ui'
 import { RoleItem } from './role-item'
 
 interface ExperienceCardProps {

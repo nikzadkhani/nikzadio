@@ -5,10 +5,10 @@ import { GeistMono } from 'geist/font/mono'
 import { Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { Header } from '@/components/layout/header'
+import { Header, ThemeProvider } from '@/layout'
+
 
 import { baseUrl } from './sitemap'
-import { ThemeProvider } from '@/components/layout/theme-provider'
 import { JsonLd } from '@/components/seo/json-ld'
 
 const playfair = Playfair_Display({
