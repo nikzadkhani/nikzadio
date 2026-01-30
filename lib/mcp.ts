@@ -1,7 +1,5 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { Transport } from "@modelcontextprotocol/sdk/shared/transport.js";
-import { JSONRPCMessage, JSONRPCResponse } from "@modelcontextprotocol/sdk/types.js";
-import { z } from "zod";
 // @ts-ignore
 import toml from "toml";
 import fs from "fs";

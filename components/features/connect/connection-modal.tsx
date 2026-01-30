@@ -32,12 +32,7 @@ export function ConnectionModal({ isOpen, onClose }: ConnectionModalProps) {
     const configSnippet = {
         "mcpServers": {
             "nikzad-resume": {
-                "command": "npx",
-                "args": [
-                    "-y",
-                    "@modelcontextprotocol/server-fetch",
-                    "https://nikzad.io/api/sse"
-                ]
+                "url": "https://www.nikzad.io/api/sse"
             }
         }
     }
