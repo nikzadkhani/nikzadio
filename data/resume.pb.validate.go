@@ -555,6 +555,8 @@ func (m *Job) validate(all bool) error {
 
 	// no validation rules for Company
 
+	// no validation rules for Tagline
+
 	// no validation rules for Title
 
 	// no validation rules for Start

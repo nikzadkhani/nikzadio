@@ -241,7 +241,6 @@ function TestClient() {
 
             setMessages(prev => [...prev, { role: 'assistant', content: assistantMessage }])
         } catch (error) {
-            console.error('Test client error:', error)
             const errorMessage = error instanceof Error ? error.message : 'Unknown error'
             setMessages(prev => [...prev, {
                 role: 'assistant',
@@ -279,13 +278,12 @@ function TestClient() {
                     {messages.map((msg, i) => (
                         <div
                             key={i}
-                            className={`p-3 rounded-lg text-sm ${
-                                msg.role === 'user'
+                            className={`p-3 rounded-lg text-sm ${msg.role === 'user'
                                     ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-900 dark:text-blue-100 ml-8'
                                     : 'bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-stone-100 mr-8'
-                            }`}
+                                }`}
                         >
-                            {msg.role === "user" ? <div className="whitespace-pre-wrap">{msg.content}</div> : <ReactMarkdown components={{ p: ({children}) => <p className="mb-2 last:mb-0">{children}</p>, strong: ({children}) => <strong className="font-bold">{children}</strong>, ul: ({children}) => <ul className="list-disc list-inside space-y-1">{children}</ul>, li: ({children}) => <li>{children}</li> }}>{msg.content}</ReactMarkdown>}
+                            {msg.role === "user" ? <div className="whitespace-pre-wrap">{msg.content}</div> : <ReactMarkdown components={{ p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>, strong: ({ children }) => <strong className="font-bold">{children}</strong>, ul: ({ children }) => <ul className="list-disc list-inside space-y-1">{children}</ul>, li: ({ children }) => <li>{children}</li> }}>{msg.content}</ReactMarkdown>}
                         </div>
                     ))}
                     {loading && (

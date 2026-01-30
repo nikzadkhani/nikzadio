@@ -91,9 +91,9 @@ export interface Publication {
 }
 
 export interface Job {
-  title: string;
   company: string;
   tagline: string;
+  title: string;
   start: string;
   end: string;
   location: string;
@@ -493,28 +493,28 @@ function createBaseJob(): Job {
 export const Job: MessageFns<Job> = {
   encode(message: Job, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.company !== "") {
-    }
-    if (message.tagline !== "") {
-      obj.tagline = message.tagline;
       writer.uint32(10).string(message.company);
     }
+    if (message.tagline !== "") {
+      writer.uint32(18).string(message.tagline);
+    }
     if (message.title !== "") {
-      writer.uint32(18).string(message.title);
+      writer.uint32(26).string(message.title);
     }
     if (message.start !== "") {
-      writer.uint32(26).string(message.start);
+      writer.uint32(34).string(message.start);
     }
     if (message.end !== "") {
-      writer.uint32(34).string(message.end);
+      writer.uint32(42).string(message.end);
     }
     if (message.location !== "") {
-      writer.uint32(42).string(message.location);
+      writer.uint32(50).string(message.location);
     }
     for (const v of message.description) {
-      writer.uint32(50).string(v!);
+      writer.uint32(58).string(v!);
     }
     for (const v of message.skills) {
-      writer.uint32(58).string(v!);
+      writer.uint32(66).string(v!);
     }
     return writer;
   },
@@ -539,7 +539,7 @@ export const Job: MessageFns<Job> = {
             break;
           }
 
-          message.title = reader.string();
+          message.tagline = reader.string();
           continue;
         }
         case 3: {
@@ -547,7 +547,7 @@ export const Job: MessageFns<Job> = {
             break;
           }
 
-          message.start = reader.string();
+          message.title = reader.string();
           continue;
         }
         case 4: {
@@ -555,7 +555,7 @@ export const Job: MessageFns<Job> = {
             break;
           }
 
-          message.end = reader.string();
+          message.start = reader.string();
           continue;
         }
         case 5: {
@@ -563,7 +563,7 @@ export const Job: MessageFns<Job> = {
             break;
           }
 
-          message.location = reader.string();
+          message.end = reader.string();
           continue;
         }
         case 6: {
@@ -571,11 +571,19 @@ export const Job: MessageFns<Job> = {
             break;
           }
 
-          message.description.push(reader.string());
+          message.location = reader.string();
           continue;
         }
         case 7: {
           if (tag !== 58) {
+            break;
+          }
+
+          message.description.push(reader.string());
+          continue;
+        }
+        case 8: {
+          if (tag !== 66) {
             break;
           }
 
@@ -609,10 +617,10 @@ export const Job: MessageFns<Job> = {
   toJSON(message: Job): unknown {
     const obj: any = {};
     if (message.company !== "") {
+      obj.company = message.company;
     }
     if (message.tagline !== "") {
       obj.tagline = message.tagline;
-      obj.company = message.company;
     }
     if (message.title !== "") {
       obj.title = message.title;

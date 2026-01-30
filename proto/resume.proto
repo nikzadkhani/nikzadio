@@ -44,12 +44,13 @@ message Publication {
 
 message Job {
   string company = 1;
-  string title = 2;
-  string start = 3;
-  string end = 4;
-  string location = 5;
-  repeated string description = 6;
-  repeated string skills = 7;
+  string tagline = 2;
+  string title = 3;
+  string start = 4;
+  string end = 5;
+  string location = 6;
+  repeated string description = 7;
+  repeated string skills = 8;
 }
 
 message Education {

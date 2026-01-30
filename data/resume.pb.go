@@ -311,12 +311,13 @@ func (x *Publication) GetSkills() []string {
 type Job struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Company       string                 `protobuf:"bytes,1,opt,name=company,proto3" json:"company,omitempty"`
-	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Start         string                 `protobuf:"bytes,3,opt,name=start,proto3" json:"start,omitempty"`
-	End           string                 `protobuf:"bytes,4,opt,name=end,proto3" json:"end,omitempty"`
-	Location      string                 `protobuf:"bytes,5,opt,name=location,proto3" json:"location,omitempty"`
-	Description   []string               `protobuf:"bytes,6,rep,name=description,proto3" json:"description,omitempty"`
-	Skills        []string               `protobuf:"bytes,7,rep,name=skills,proto3" json:"skills,omitempty"`
+	Tagline       string                 `protobuf:"bytes,2,opt,name=tagline,proto3" json:"tagline,omitempty"`
+	Title         string                 `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
+	Start         string                 `protobuf:"bytes,4,opt,name=start,proto3" json:"start,omitempty"`
+	End           string                 `protobuf:"bytes,5,opt,name=end,proto3" json:"end,omitempty"`
+	Location      string                 `protobuf:"bytes,6,opt,name=location,proto3" json:"location,omitempty"`
+	Description   []string               `protobuf:"bytes,7,rep,name=description,proto3" json:"description,omitempty"`
+	Skills        []string               `protobuf:"bytes,8,rep,name=skills,proto3" json:"skills,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -354,6 +355,13 @@ func (*Job) Descriptor() ([]byte, []int) {
 func (x *Job) GetCompany() string {
 	if x != nil {
 		return x.Company
+	}
+	return ""
+}
+
+func (x *Job) GetTagline() string {
+	if x != nil {
+		return x.Tagline
 	}
 	return ""
 }
@@ -493,15 +501,16 @@ const file_resume_proto_rawDesc = "" +
 	"\x04date\x18\x03 \x01(\tR\x04date\x12 \n" +
 	"\vdescription\x18\x04 \x03(\tR\vdescription\x12\x12\n" +
 	"\x04link\x18\x05 \x01(\tR\x04link\x12\x16\n" +
-	"\x06skills\x18\x06 \x03(\tR\x06skills\"\xb3\x01\n" +
+	"\x06skills\x18\x06 \x03(\tR\x06skills\"\xcd\x01\n" +
 	"\x03Job\x12\x18\n" +
-	"\acompany\x18\x01 \x01(\tR\acompany\x12\x14\n" +
-	"\x05title\x18\x02 \x01(\tR\x05title\x12\x14\n" +
-	"\x05start\x18\x03 \x01(\tR\x05start\x12\x10\n" +
-	"\x03end\x18\x04 \x01(\tR\x03end\x12\x1a\n" +
-	"\blocation\x18\x05 \x01(\tR\blocation\x12 \n" +
-	"\vdescription\x18\x06 \x03(\tR\vdescription\x12\x16\n" +
-	"\x06skills\x18\a \x03(\tR\x06skills\"c\n" +
+	"\acompany\x18\x01 \x01(\tR\acompany\x12\x18\n" +
+	"\atagline\x18\x02 \x01(\tR\atagline\x12\x14\n" +
+	"\x05title\x18\x03 \x01(\tR\x05title\x12\x14\n" +
+	"\x05start\x18\x04 \x01(\tR\x05start\x12\x10\n" +
+	"\x03end\x18\x05 \x01(\tR\x03end\x12\x1a\n" +
+	"\blocation\x18\x06 \x01(\tR\blocation\x12 \n" +
+	"\vdescription\x18\a \x03(\tR\vdescription\x12\x16\n" +
+	"\x06skills\x18\b \x03(\tR\x06skills\"c\n" +
 	"\tEducation\x12\x16\n" +
 	"\x06school\x18\x01 \x01(\tR\x06school\x12\x16\n" +
 	"\x06degree\x18\x02 \x01(\tR\x06degree\x12\x14\n" +
