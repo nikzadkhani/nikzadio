@@ -4,7 +4,7 @@ import { cn } from '@/utils/cn';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { GlassCard } from '@/components/ui/glass-card';
+import { StoneCard } from '@/components/ui/stone-card';
 import { SocialButton, GithubIcon, LinkedinIcon, MailIcon } from '@/components/ui/social-button';
 
 const navItems = {
@@ -15,17 +15,11 @@ const navItems = {
 export function Sidebar() {
     const pathname = usePathname();
     return (
-        <GlassCard
+        <StoneCard
             data-name="sidebar"
-            intensity="high"
-            hoverEffect={false}
-            className="relative overflow-visible p-8 flex flex-col items-start text-left h-full border-white/30 dark:border-white/10 shadow-2xl"
+            intensity="medium"
+            className="relative overflow-visible p-8 flex flex-col items-start text-left h-full shadow-xl"
         >
-            {/* Specular Highlight / Prism Edge */}
-            {/* Specular Highlight / Prism Edge */}
-            <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/10 to-transparent opacity-50 dark:opacity-20" />
-            <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-white/50 dark:from-white/10 via-transparent to-transparent opacity-30 dark:opacity-10" />
-
             {/* Content Wrapper */}
             <div className="flex flex-col h-full w-full relative z-10">
                 {/* Main Content */}
@@ -86,14 +80,14 @@ export function Sidebar() {
                                 label={social.label}
                                 icon={social.icon}
                                 color={social.color}
-                                className="py-2 px-4 bg-stone-50/80 dark:bg-white/10 border border-white/60 dark:border-white/20 shadow-sm hover:shadow-md backdrop-blur-md"
+                                className="py-2 px-4 bg-stone-100 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 shadow-sm hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors"
                             />
                         ))}
                     </div>
                 </div>
 
                 {/* Footer */}
-                <div data-name="sidebar-footer" className="w-full mt-auto pt-6 border-t border-white/10 dark:border-white/5">
+                <div data-name="sidebar-footer" className="w-full mt-auto pt-6 border-t border-stone-200 dark:border-stone-800">
                     <div className="flex flex-col gap-2 mb-4">
                         <a
                             href="https://github.com/nikzadkhani/nikzadio"
@@ -112,7 +106,7 @@ export function Sidebar() {
                     </p>
                 </div>
             </div>
-        </GlassCard>
+        </StoneCard>
     );
 }
 

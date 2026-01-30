@@ -1,25 +1,40 @@
-import { EDUCATION } from 'data/portfolio'
-import { GlassCard } from '@/components/ui/glass-card'
+"use client";
+import { EDUCATION } from "data/portfolio";
+
+import { motion } from "framer-motion";
 
 export function Education() {
     return (
-        <section className="mb-8 relative z-10" data-name="education-section">
-            <h2 className="mb-6 text-xl font-semibold tracking-tighter ml-4 text-stone-800 dark:text-stone-200">Education</h2>
-            <div className="space-y-6">
-                {EDUCATION.map((edu, index) => (
-                    <GlassCard key={index} className="flex flex-col space-y-2 p-8 pr-12" intensity="high" data-name="education-card">
-                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
-                            <h3 className="font-medium text-lg text-stone-900 dark:text-stone-100">{edu.school}</h3>
-                            <span className="text-sm text-neutral-600 dark:text-neutral-400 tabular-nums whitespace-nowrap shrink-0">
-                                {edu.start.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
-                            </span>
+        <section className="mb-32" data-name="education-section">
+            <h2 className="text-sm font-semibold text-stone-900 dark:text-stone-100 uppercase tracking-widest mb-8 ml-1">Education</h2>
+            <motion.div
+                className="space-y-8"
+                variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                        opacity: 1,
+                        transition: { staggerChildren: 0.1 }
+                    }
+                }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+            >
+                {EDUCATION.map((edu, idx) => (
+                    <div
+                        key={idx}
+                        className="flex flex-col md:flex-row md:items-baseline justify-between border-t border-stone-200 dark:border-stone-800 pt-6 group transition-all duration-300"
+                    >
+                        <div>
+                            <h3 className="text-2xl font-bold text-stone-900 dark:text-stone-100">{edu.school}</h3>
+                            <p className="text-stone-600 dark:text-stone-400 mt-2 text-lg">{edu.degree}</p>
                         </div>
-                        <p className="text-neutral-700 dark:text-neutral-300 font-medium">
-                            {edu.degree}
-                        </p>
-                    </GlassCard>
+                        <div className="font-mono text-stone-400 text-sm mt-2 md:mt-0 opacity-60 group-hover:opacity-100 transition-opacity">
+                            {edu.start.getFullYear()} — {edu.end ? edu.end.getFullYear() : 'Present'}
+                        </div>
+                    </div>
                 ))}
-            </div>
+            </motion.div>
         </section>
-    )
+    );
 }

@@ -2,6 +2,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/vendor
 
 # Testing
 /coverage
@@ -24,6 +25,9 @@ pnpm-debug.log*
 # Local Env Files
 .env*.local
 .env
+
+# Backup files
+*.backup
 
 # Vercel
 .vercel

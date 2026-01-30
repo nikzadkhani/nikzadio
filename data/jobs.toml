@@ -1,0 +1,64 @@
+[[jobs]]
+company = "Verily"
+tagline = "Alphabet's precision health subsidiary"
+title = "Senior Software Engineer"
+start = "2025-05-01"
+location = "Boston, MA"
+description = [
+    "Engineered and launched two distinct LLM-powered features for the Verily Me mobile application, enabling users to query personal healthcare data via natural language.",
+    "Architected and deployed scalable, agentic AI models to production on Google Kubernetes Engine (GKE), leveraging GCP Vertex AI and LangGraph."
+]
+skills = ["Python", "Go", "Typescript", "React", "GCP", "Terraform", "Kubernetes", "LLMs", "LangGraph", "Vertex AI", "Docker", "Single SPA", "Github CI/CD"]
+
+[[jobs]]
+company = "Verily"
+tagline = "Alphabet's precision health subsidiary"
+title = "Software Engineer III"
+start = "2023-07-01"
+end = "2025-05-01"
+location = "Boston, MA"
+description = [
+    "Built and orchestrated robust data pipelines with Airflow, processing hundreds of thousands of FHIR records daily into BigQuery.",
+    "Developed a full-stack microservice using gRPC and React to provide embedded Looker dashboards.",
+    "Automated the deployment of all GCP-based infrastructure using Terraform and configured GitHub workflows for CI/CD."
+]
+skills = ["Python", "Go", "Typescript", "React", "GCP", "Terraform", "Kubernetes", "Airflow", "BigQuery", "SQL", "gRPC", "Looker", "Docker", "LangGraph", "Single SPA", "Github CI/CD"]
+
+[[jobs]]
+company = "PathAI"
+tagline = "AI-powered pathology diagnostics"
+title = "Software Engineer I"
+start = "2021-12-01"
+end = "2023-06-01"
+location = "Boston, MA"
+description = [
+    "Developed and implemented full stack solutions using Vue.js for frontend and Django for backend.",
+    "Built infrastructure to manage ELT pipelines to aggregate data from APIs/databases to Snowflake data warehouse."
+]
+skills = ["Python", "Vue.js", "Typescript", "Django", "AWS", "Terraform", "Kubernetes", "Snowflake", "SQL", "Docker", "Gitlab CI/CD"]
+
+[[jobs]]
+company = "AI4ALL"
+tagline = "AI education nonprofit"
+title = "Researcher and Coordinator"
+start = "2020-07-01"
+end = "2020-08-01"
+location = "Boston, MA"
+description = [
+    "Contributed to adding additional up-sampling functionality to a custom modular parameter sharing neural network architecture in PyTorch.",
+    "Coordinated and taught AI classes using Jupyter notebooks."
+]
+skills = ["Python", "PyTorch", "Jupyter"]
+
+[[jobs]]
+company = "SenseTime 商汤科技"
+tagline = "Computer vision research lab"
+title = "Research Intern"
+start = "2018-06-01"
+end = "2018-08-01"
+location = "Shenzhen, China"
+description = [
+    "Collected data on Smartphone camera image quality as a function of smartphone camera settings.",
+    "Developed a predictive model for the amount of noise in smartphone camera when given camera settings."
+]
+skills = ["MATLAB", "Computer Vision"]
