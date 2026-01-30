@@ -1,5 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
+import { Transport } from "@modelcontextprotocol/sdk/shared/transport.js";
+import { JSONRPCMessage, JSONRPCResponse } from "@modelcontextprotocol/sdk/types.js";
 import { z } from "zod";
 // @ts-ignore
 import toml from "toml";
@@ -18,7 +19,6 @@ interface ResumeData {
 export class ResumeMcpServer {
     private server: McpServer;
     private data: ResumeData | null = null;
-    private transport: SSEServerTransport | null = null;
 
     constructor() {
         this.server = new McpServer({
@@ -134,42 +134,43 @@ export class ResumeMcpServer {
     }
 
     public async handleSSE(req: Request) {
-        const transport = new SSEServerTransport("/api/messages", {
-            // @ts-ignore
-            keepAlive: true,
-            keepAliveInterval: 5000,
-        });
-
-        // Create a stream that we can write to
         const stream = new TransformStream();
         const writer = stream.writable.getWriter();
         const encoder = new TextEncoder();
 
-        // Override send to write to the stream
-        transport.send = async (message) => {
-            const sseData = `event: message\ndata: ${JSON.stringify(message)}\n\n`;
-            await writer.write(encoder.encode(sseData));
+        // Custom transport implementation compatible with Next.js Edge/App Router
+        const transport: Transport = {
+            start: async () => {
+                // Send endpoint event immediately upon connection
+                const host = req.headers.get("host");
+                const protocol = host?.includes("localhost") ? "http" : "https";
+                const endpoint = `${protocol}://${host}/api/messages`;
+                const endpointEvent = `event: endpoint\ndata: ${endpoint}\n\n`;
+                await writer.write(encoder.encode(endpointEvent));
+            },
+            send: async (message) => {
+                const sseData = `event: message\ndata: ${JSON.stringify(message)}\n\n`;
+                await writer.write(encoder.encode(sseData));
+            },
+            close: async () => {
+                try {
+                    await writer.close();
+                } catch (e) {
+                    // Ignore closing errors
+                }
+            },
+            onmessage: undefined,
+            onclose: undefined,
+            onerror: undefined
         };
-
-        // Override start to write the endpoint event and handle closure
-        // @ts-ignore
-        transport.start = async (res: any) => {
-            // We ignore 'res' because we are controlling the stream directly
-            const endpointEvent = `event: endpoint\ndata: /api/messages\n\n`;
-            await writer.write(encoder.encode(endpointEvent));
-        };
-
-        // @ts-ignore
-        this.transport = transport;
 
         // Handle closure
         req.signal.addEventListener("abort", () => {
-            writer.close().catch(() => { });
+            transport.close();
             this.server.close();
         });
 
-        // Connect the server to the transport
-        // connect call transport.start(), which we overrode
+        // Connect server to transport
         await this.server.connect(transport);
 
         return new Response(stream.readable, {
@@ -185,6 +186,7 @@ export class ResumeMcpServer {
         let body;
         try {
             body = await req.json();
+            // console.log("MCP Request:", JSON.stringify(body, null, 2));
         } catch (e) {
             return new Response("Invalid JSON", { status: 400 });
         }
@@ -193,7 +195,7 @@ export class ResumeMcpServer {
     }
 
     private async processStatelessPost(body: any) {
-        // Create a temporary server instance for this request
+        // Create a temporary server instance to handle this single request statelessly
         const tempServer = new McpServer({
             name: "Nikzad's Resume Agent",
             version: "1.0.0"
@@ -201,33 +203,31 @@ export class ResumeMcpServer {
 
         this.registerToolsOnServer(tempServer);
 
-        // Mock transport
         let responseData: any = null;
-        const mockTransport = {
+
+        const transport: Transport = {
             start: async () => { },
-            send: async (message: any) => {
+            send: async (message) => {
                 responseData = message;
             },
             close: async () => { },
-            onmessage: (message: any) => { },
-            onclose: () => { },
-            onerror: (error: Error) => { },
+            onmessage: undefined,
+            onclose: undefined,
+            onerror: undefined
         };
 
-        await tempServer.connect(mockTransport);
+        await tempServer.connect(transport);
 
-        // Inject the message
-        if (mockTransport.onmessage) {
-            // @ts-ignore
-            mockTransport.onmessage(body);
+        // Inject the message directly
+        if (transport.onmessage) {
+            transport.onmessage(body);
         }
 
-        // Wait for response
-        // @ts-ignore
+        // Wait for response with timeout
         if (!responseData) {
             await new Promise<void>((resolve) => {
-                const originalSend = mockTransport.send;
-                mockTransport.send = async (message) => {
+                const originalSend = transport.send;
+                transport.send = async (message) => {
                     responseData = message;
                     resolve();
                 };
