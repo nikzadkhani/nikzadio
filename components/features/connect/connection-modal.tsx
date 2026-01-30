@@ -36,7 +36,7 @@ export function ConnectionModal({ isOpen, onClose }: ConnectionModalProps) {
                 "args": [
                     "-y",
                     "@modelcontextprotocol/server-fetch",
-                    "https://nikzad.io/api/"
+                    "https://nikzad.io/api/sse"
                 ]
             }
         }
