@@ -3,7 +3,7 @@ const toml = require('toml');
 const path = require('path');
 
 const dataDir = path.join(__dirname, '../data');
-const jsonPath = path.join(dataDir, 'resume.json');
+const jsonPath = path.join(dataDir, '../generated/resume.json');
 
 try {
     // Read and parse each TOML file
