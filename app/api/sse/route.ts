@@ -4,7 +4,14 @@ import { mcpServer } from "@/lib/mcp";
 export const dynamic = "force-dynamic";
 
 export async function GET(req: Request) {
-    return mcpServer.handleSSE(req);
+    const response = await mcpServer.handleSSE(req);
+
+    // Add CORS headers to the response
+    response.headers.set("Access-Control-Allow-Origin", "*");
+    response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+    return response;
 }
 
 export async function OPTIONS(req: Request) {
