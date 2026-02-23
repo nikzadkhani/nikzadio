@@ -10,7 +10,19 @@ export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  const cronSecret = process.env.CRON_SECRET;
+
+  if (authHeader !== `Bearer ${cronSecret}`) {
+    // Safe debug logging — never log actual secret values
+    console.error("[cron/spotify] Auth failed:", {
+      cronSecretSet: !!cronSecret,
+      cronSecretLength: cronSecret?.length ?? 0,
+      authHeaderSet: !!authHeader,
+      authHeaderLength: authHeader?.length ?? 0,
+      // Compare first 4 chars of each to spot obvious mismatches
+      cronSecretPrefix: cronSecret?.slice(0, 4) ?? "n/a",
+      authHeaderPrefix: authHeader?.replace("Bearer ", "").slice(0, 4) ?? "n/a",
+    });
     return new Response("Unauthorized", { status: 401 });
   }
 
