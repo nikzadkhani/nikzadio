@@ -27,9 +27,10 @@ jobs:
           response=$(curl -s --location-trusted -w "\n%{http_code}" -X GET -H "Authorization: Bearer $CRON_SECRET" "$URL")
           body=$(echo "$response" | head -n -1)
           status_code=$(echo "$response" | tail -n 1)
+          tracks_inserted=$(echo "$body" | jq -r '.tracksInserted // "unknown"')
 
           echo "Status Code: $status_code"
-          echo "Response Body: $body"
+          echo "Songs synced: $tracks_inserted"
 
           if [ "$status_code" -ne 200 ]; then
             echo "::error:: Failed to sync Spotify history. Server responded with status code $status_code."
