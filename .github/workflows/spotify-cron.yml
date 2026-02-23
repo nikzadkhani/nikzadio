@@ -15,11 +15,10 @@ jobs:
       - name: Trigger Vercel Serverless Sync
         env:
           CRON_SECRET: ${{ secrets.CRON_SECRET }}
-          # In production, this would be your actual domain (e.g. https://nikzad.io/api/cron/spotify)
-          # Make sure to set VERCEL_PRODUCTION_URL in GitHub Secrets too
+          VERCEL_PRODUCTION_URL: ${{ secrets.VERCEL_PRODUCTION_URL }}
           URL: ${{ secrets.VERCEL_PRODUCTION_URL }}/api/cron/spotify
         run: |
-          if [ -z "$CRON_SECRET" ] || [ -z "${{ secrets.VERCEL_PRODUCTION_URL }}" ]; then
+          if [ -z "$CRON_SECRET" ] || [ -z "$VERCEL_PRODUCTION_URL" ]; then
              echo "Missing required Gitub Secrets (CRON_SECRET or VERCEL_PRODUCTION_URL). Skipping execution."
              exit 1
           fi
