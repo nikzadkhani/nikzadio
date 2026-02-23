@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import ReactMarkdown from 'react-markdown'
+import React from 'react'
 
 interface ConnectionModalProps {
     isOpen: boolean
@@ -181,6 +182,15 @@ export function ConnectionModal({ isOpen, onClose }: ConnectionModalProps) {
 function TestClient() {
     const [messages, setMessages] = useState<Array<{ role: 'user' | 'assistant'; content: string; toolName?: string }>>([])
     const [loading, setLoading] = useState(false)
+    const messagesEndRef = React.useRef<HTMLDivElement>(null)
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
+
+    useEffect(() => {
+        scrollToBottom()
+    }, [messages, loading])
 
     const tools = [
         { name: 'get_bio', label: 'Get Bio', icon: '👤' },
@@ -269,7 +279,7 @@ function TestClient() {
 
             {/* Messages */}
             {messages.length > 0 && (
-                <div className="space-y-3 max-h-[300px] overflow-y-auto">
+                <div className="space-y-3">
                     {messages.map((msg, i) => (
                         <div
                             key={i}
@@ -278,7 +288,14 @@ function TestClient() {
                                 : 'bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-stone-100 mr-8'
                                 }`}
                         >
-                            {msg.role === "user" ? <div className="whitespace-pre-wrap">{msg.content}</div> : <ReactMarkdown components={{ p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>, strong: ({ children }) => <strong className="font-bold">{children}</strong>, ul: ({ children }) => <ul className="list-disc list-inside space-y-1">{children}</ul>, li: ({ children }) => <li>{children}</li> }}>{msg.content}</ReactMarkdown>}
+                            {msg.role === "user" ? <div className="whitespace-pre-wrap">{msg.content}</div> : <ReactMarkdown components={{
+                                p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+                                strong: ({ children }) => <strong className="font-bold">{children}</strong>,
+                                ul: ({ children }) => <ul className="list-disc list-inside space-y-1">{children}</ul>,
+                                li: ({ children }) => <li>{children}</li>,
+                                pre: ({ children }) => <pre className="overflow-x-auto p-2 bg-stone-200 dark:bg-stone-900 rounded">{children}</pre>,
+                                code: ({ children }) => <code className="text-xs font-mono">{children}</code>
+                            }}>{msg.content}</ReactMarkdown>}
                         </div>
                     ))}
                     {loading && (
@@ -287,6 +304,7 @@ function TestClient() {
                             <span className="inline-block animate-pulse">●</span>
                         </div>
                     )}
+                    <div ref={messagesEndRef} />
                 </div>
             )}
         </div>
