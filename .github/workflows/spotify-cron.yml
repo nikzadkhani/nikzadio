@@ -24,7 +24,7 @@ jobs:
              exit 1
           fi
 
-          response=$(curl -s -w "\n%{http_code}" -X GET -H "Authorization: Bearer $CRON_SECRET" "$URL")
+          response=$(curl -s -L -w "\n%{http_code}" -X GET -H "Authorization: Bearer $CRON_SECRET" "$URL")
           body=$(echo "$response" | head -n -1)
           status_code=$(echo "$response" | tail -n 1)
 
