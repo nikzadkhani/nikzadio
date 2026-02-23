@@ -1,25 +1,23 @@
-import { ImageResponse } from 'next/og'
+import { ImageResponse } from "next/og";
 
 export default function Icon() {
-    return new ImageResponse(
-        (
-            <div
-                style={{
-                    fontSize: 32,
-                    background: 'transparent',
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }}
-            >
-                🤖
-            </div>
-        ),
-        {
-            width: 32,
-            height: 32,
-        }
-    )
+  return new ImageResponse(
+    <div
+      style={{
+        fontSize: 32,
+        background: "transparent",
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      🤖
+    </div>,
+    {
+      width: 32,
+      height: 32,
+    }
+  );
 }

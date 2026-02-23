@@ -1,13 +1,13 @@
-import { pool } from '@/lib/db';
+import { pool } from "@/lib/db";
 
 export type TopArtist = {
-    artist: string;
-    count: number;
+  artist: string;
+  count: number;
 };
 
 export async function getTopArtists(limit: number = 5): Promise<TopArtist[]> {
-    const result = await pool.query(
-        `
+  const result = await pool.query(
+    `
     SELECT
       t.artist,
       COUNT(*) as count
@@ -18,11 +18,11 @@ export async function getTopArtists(limit: number = 5): Promise<TopArtist[]> {
     ORDER BY count DESC
     LIMIT $1
     `,
-        [limit]
-    );
+    [limit]
+  );
 
-    return result.rows.map(row => ({
-        artist: row.artist,
-        count: parseInt(row.count, 10)
-    }));
+  return result.rows.map((row) => ({
+    artist: row.artist,
+    count: parseInt(row.count, 10),
+  }));
 }

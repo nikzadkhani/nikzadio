@@ -56,7 +56,7 @@ Try it at [nikzad.io](https://nikzad.io) if you want to see it in action.
 
 ## Why Protocol Buffers for a Resume?
 
-Great question. The answer is "why not?" 
+Great question. The answer is "why not?"
 
 But seriously, it enforces a schema, generates type-safe code for both Go and TypeScript, and makes me feel fancy. Plus it's fun to say "my resume is a protobuf message."
 

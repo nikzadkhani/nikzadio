@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -19,42 +15,18 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "@/components/*": [
-        "components/*"
-      ],
-      "@/features/*": [
-        "components/features/*"
-      ],
-      "@/features": [
-        "components/features"
-      ],
-      "@/ui/*": [
-        "components/ui/*"
-      ],
-      "@/ui": [
-        "components/ui"
-      ],
-      "@/layout/*": [
-        "components/layout/*"
-      ],
-      "@/layout": [
-        "components/layout"
-      ],
-      "@/utils/*": [
-        "utils/*"
-      ],
-      "@/utils": [
-        "utils"
-      ],
-      "@/data/*": [
-        "data/*"
-      ],
-      "@/app/*": [
-        "app/*"
-      ]
+      "@/*": ["./*"],
+      "@/components/*": ["components/*"],
+      "@/features/*": ["components/features/*"],
+      "@/features": ["components/features"],
+      "@/ui/*": ["components/ui/*"],
+      "@/ui": ["components/ui"],
+      "@/layout/*": ["components/layout/*"],
+      "@/layout": ["components/layout"],
+      "@/utils/*": ["utils/*"],
+      "@/utils": ["utils"],
+      "@/data/*": ["data/*"],
+      "@/app/*": ["app/*"]
     },
     "incremental": true,
     "plugins": [
@@ -71,7 +43,5 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
