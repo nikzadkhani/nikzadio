@@ -2,8 +2,8 @@ name: Spotify Listening History Synchronizer
 
 on:
   schedule:
-    # Run every 15 minutes to save Neon Database compute hours
-    - cron: "*/15 * * * *"
+    # Run every 30 minutes to save Neon Database compute hours
+    - cron: "*/30 * * * *"
   # Allow manual trigger from the GitHub Actions tab for debugging
   workflow_dispatch:
 
