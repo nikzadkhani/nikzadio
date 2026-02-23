@@ -4,7 +4,7 @@
 //   protoc               v6.33.4
 // source: validate/validate.proto
 
-/* eslint-disable */
+ 
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { Duration } from "../google/protobuf/duration";
 import { Timestamp } from "../google/protobuf/timestamp";

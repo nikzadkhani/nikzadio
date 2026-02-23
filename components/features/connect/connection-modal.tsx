@@ -68,7 +68,7 @@ export function ConnectionModal({ isOpen, onClose }: ConnectionModalProps) {
                 Connect to Claude
               </h2>
               <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">
-                Add Nikzad's resume agent to Claude Desktop
+                Add Nikzad&apos;s resume agent to Claude Desktop
               </p>
             </div>
             <button
@@ -96,21 +96,19 @@ export function ConnectionModal({ isOpen, onClose }: ConnectionModalProps) {
           <div className="mt-6 flex gap-2">
             <button
               onClick={() => setActiveTab("setup")}
-              className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${
-                activeTab === "setup"
+              className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${activeTab === "setup"
                   ? "bg-stone-900 text-stone-100 dark:bg-stone-100 dark:text-stone-900"
                   : "text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:hover:bg-stone-800"
-              }`}
+                }`}
             >
               Setup Instructions
             </button>
             <button
               onClick={() => setActiveTab("test")}
-              className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${
-                activeTab === "test"
+              className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${activeTab === "test"
                   ? "bg-stone-900 text-stone-100 dark:bg-stone-100 dark:text-stone-900"
                   : "text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:hover:bg-stone-800"
-              }`}
+                }`}
             >
               Test Client
             </button>
@@ -139,7 +137,7 @@ export function ConnectionModal({ isOpen, onClose }: ConnectionModalProps) {
                       2.
                     </span>
                     <span>
-                      Click "Edit Config" to open your MCP configuration file
+                      Click &quot;Edit Config&quot; to open your MCP configuration file
                     </span>
                   </li>
                   <li className="flex gap-3">
@@ -176,8 +174,8 @@ export function ConnectionModal({ isOpen, onClose }: ConnectionModalProps) {
               <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-950/30">
                 <p className="text-sm text-blue-900 dark:text-blue-100">
                   <strong>💡 Tip:</strong> Once connected, you can ask Claude
-                  questions like "What's Nikzad's latest work experience?" or
-                  "List Nikzad's publications" and it will use this MCP server
+                  questions like &quot;What&apos;s Nikzad&apos;s latest work experience?&quot; or
+                  &quot;List Nikzad&apos;s publications&quot; and it will use this MCP server
                   to fetch the data.
                 </p>
               </div>
@@ -186,7 +184,7 @@ export function ConnectionModal({ isOpen, onClose }: ConnectionModalProps) {
             <div className="space-y-4">
               <p className="text-sm text-stone-600 dark:text-stone-400">
                 Test the MCP server right here in your browser. Ask questions
-                about Nikzad's background!
+                about Nikzad&apos;s background!
               </p>
               <TestClient />
             </div>
@@ -315,11 +313,10 @@ function TestClient() {
           {messages.map((msg, i) => (
             <div
               key={i}
-              className={`rounded-lg p-3 text-sm ${
-                msg.role === "user"
+              className={`rounded-lg p-3 text-sm ${msg.role === "user"
                   ? "ml-8 bg-blue-100 text-blue-900 dark:bg-blue-900/30 dark:text-blue-100"
                   : "mr-8 bg-stone-100 text-stone-900 dark:bg-stone-800 dark:text-stone-100"
-              }`}
+                }`}
             >
               {msg.role === "user" ? (
                 <div className="whitespace-pre-wrap">{msg.content}</div>

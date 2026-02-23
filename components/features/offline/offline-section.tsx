@@ -67,8 +67,8 @@ export function OfflineSection() {
                 Bar Vlaha
               </p>
               <p className="pt-2 text-xs italic">
-                "Cooking is like coding, but with better error handling
-                (usually)."
+                &quot;Cooking is like coding, but with better error handling
+                (usually).&quot;
               </p>
             </div>
           </div>
