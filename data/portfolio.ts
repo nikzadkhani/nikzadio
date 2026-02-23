@@ -1,5 +1,5 @@
 import resumeData from '../generated/resume.json';
-import { Resume, Category, categoryToJSON } from '../generated/resume';
+import { Resume, categoryToJSON } from '../generated/resume';
 
 // Strongly typed message from Proto
 export const RESUME = Resume.fromJSON(resumeData);

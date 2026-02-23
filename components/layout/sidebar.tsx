@@ -1,18 +1,9 @@
 "use client";
 
-import { cn } from '@/utils/cn';
 import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { StoneCard, SocialButton, GithubIcon, LinkedinIcon, MailIcon } from '@/ui';
 
-const navItems = {
-    '/': { name: 'Home' },
-    '/resume': { name: 'Resume' },
-};
-
 export function Sidebar() {
-    const pathname = usePathname();
     return (
         <StoneCard
             data-name="sidebar"

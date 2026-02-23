@@ -1,10 +1,9 @@
 "use client";
 
-import { motion, useScroll, useMotionValueEvent, useTransform } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import { ThemeToggle } from "@/ui";
-import { usePathname } from "next/navigation";
 
 
 const navItems = [
@@ -17,7 +16,6 @@ const navItems = [
 export function Header() {
     const { scrollY } = useScroll();
     const [hidden, setHidden] = useState(false);
-    const pathname = usePathname();
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         const previous = scrollY.getPrevious() ?? 0;
