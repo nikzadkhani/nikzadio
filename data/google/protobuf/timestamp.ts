@@ -4,7 +4,6 @@
 //   protoc               v6.33.4
 // source: google/protobuf/timestamp.proto
 
- 
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 
 export const protobufPackage = "google.protobuf";

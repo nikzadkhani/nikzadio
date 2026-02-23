@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -19,7 +19,21 @@ export const getDurationInYears = (start: Date, end?: Date): number => {
   return diffDays / 365;
 };
 
+// Memoize mapping calculations outside component to avoid heavy execution during renders
+const skillExperienceCache = new Map<
+  string,
+  {
+    relatedExperience: typeof EXPERIENCE;
+    relatedPublications: typeof PUBLICATIONS;
+    totalYears: number;
+  }
+>();
+
 export const getAllSkillExperience = (skill: string) => {
+  if (skillExperienceCache.has(skill)) {
+    return skillExperienceCache.get(skill)!;
+  }
+
   const relatedExperience = EXPERIENCE.filter((exp) =>
     exp.skills?.includes(skill)
   );
@@ -32,26 +46,34 @@ export const getAllSkillExperience = (skill: string) => {
     totalYears += getDurationInYears(exp.start, exp.end);
   });
 
-  return {
+  const result = {
     relatedExperience,
     relatedPublications,
     totalYears: totalYears > 0 ? totalYears : 0.5,
   };
+
+  skillExperienceCache.set(skill, result);
+  return result;
 };
 
-export function InteractiveSkills() {
-  const categories = Object.entries(SKILLS).map(([category, skills]) => {
+const precomputedCategories = Object.entries(SKILLS).map(
+  ([category, skills]) => {
     const sortedSkills = [...skills].sort((a, b) => {
       const yearsA = getAllSkillExperience(a).totalYears;
       const yearsB = getAllSkillExperience(b).totalYears;
       return yearsB - yearsA;
     });
     return [category, sortedSkills] as const;
-  });
+  }
+);
 
-  const allSkills = categories.flatMap(([, skills]) => skills);
+const precomputedAllSkills = precomputedCategories.flatMap(
+  ([, skills]) => skills
+);
+
+export function InteractiveSkills() {
   const [selectedSkill, setSelectedSkill] = useState<string | null>(
-    allSkills[0]
+    precomputedAllSkills[0] || null
   );
   const detailsRef = useRef<HTMLDivElement>(null);
 
@@ -81,7 +103,7 @@ export function InteractiveSkills() {
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
         {/* Left Column: Skills List */}
         <div className="space-y-8 lg:col-span-4">
-          {categories.map(([category, items]) => (
+          {precomputedCategories.map(([category, items]) => (
             <div key={category}>
               <h3 className="mb-4 border-b border-stone-200 pb-2 text-sm font-semibold tracking-widest text-stone-900 uppercase dark:border-stone-800 dark:text-stone-100">
                 {category}

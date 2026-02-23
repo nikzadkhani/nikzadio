@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getRecentlyPlayed } from "@/lib/spotify";
 import { db } from "@/lib/db";
 import { tracks, listening_history } from "@/lib/schema";
+import { sql } from "drizzle-orm";
 
 // This is required to make Next.js treat this route as an API Endpoint
 export const maxDuration = 10;
@@ -15,47 +16,69 @@ export async function GET(request: Request) {
 
   try {
     const recentlyPlayed = await getRecentlyPlayed(50);
-    const newHistoryInserted = [];
+
+    if (!recentlyPlayed?.items?.length) {
+      return NextResponse.json({
+        success: true,
+        tracksInserted: 0,
+        message: "No recently played tracks found.",
+        recent: [],
+      });
+    }
+
+    const trackValuesMap = new Map();
+    const historyValues: { track_id: string; played_at: Date }[] = [];
 
     // Note: Spotify recently-played returns items in order of most recent first
     for (const item of recentlyPlayed.items) {
       const track = item.track;
       const playedAt = new Date(item.played_at);
 
-      // 1. Insert/Upsert the track metadata into the `tracks` table
+      trackValuesMap.set(track.id, {
+        id: track.id,
+        name: track.name,
+        artist_name: track.artists.map((a: any) => a.name).join(", "),
+        duration_ms: track.duration_ms,
+        album_image_url: track.album.images?.[0]?.url || null,
+      });
+
+      historyValues.push({
+        track_id: track.id,
+        played_at: playedAt,
+      });
+    }
+
+    const uniqueTrackValues = Array.from(trackValuesMap.values());
+
+    // 1. Batch Insert/Upsert tracks
+    if (uniqueTrackValues.length > 0) {
       await db
         .insert(tracks)
-        .values({
-          id: track.id,
-          name: track.name,
-          artist_name: track.artists.map((a: any) => a.name).join(", "),
-          duration_ms: track.duration_ms,
-          album_image_url: track.album.images?.[0]?.url || null,
-        })
+        .values(uniqueTrackValues)
         .onConflictDoUpdate({
           target: tracks.id,
           set: {
-            name: track.name,
-            artist_name: track.artists.map((a: any) => a.name).join(", "),
-            album_image_url: track.album.images?.[0]?.url || null,
+            name: sql`EXCLUDED.name`,
+            artist_name: sql`EXCLUDED.artist_name`,
+            album_image_url: sql`EXCLUDED.album_image_url`,
           },
         });
+    }
 
-      // 2. Insert the listening history entry.
-      // If the GitHub Action runs frequently, there will be overlapping tracks.
-      // The unique index on `(track_id, played_at)` and `onConflictDoNothing` handles duplicates cleanly.
+    // 2. Batch Insert listening history
+    let newHistoryInserted: string[] = [];
+    if (historyValues.length > 0) {
       const historyInsert = await db
         .insert(listening_history)
-        .values({
-          track_id: track.id,
-          played_at: playedAt,
-        })
+        .values(historyValues)
         .onConflictDoNothing()
         .returning();
 
-      if (historyInsert.length > 0) {
-        newHistoryInserted.push(track.name);
-      }
+      // Match inserted track IDs back to their names for the response
+      newHistoryInserted = historyInsert.map((h) => {
+        const t = uniqueTrackValues.find((track) => track.id === h.track_id);
+        return t ? t.name : h.track_id;
+      });
     }
 
     return NextResponse.json({

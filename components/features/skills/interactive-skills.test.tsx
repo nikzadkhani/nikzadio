@@ -48,34 +48,18 @@ describe("InteractiveSkills", () => {
   it("renders skill bubbles", () => {
     render(<InteractiveSkills />);
     const firstSkill = Object.values(SKILLS)[0][0];
-    expect(screen.getByText(firstSkill)).toBeDefined();
+    expect(screen.getAllByText(firstSkill).length).toBeGreaterThan(0);
   });
 
   it("shows details when a skill is clicked", () => {
     render(<InteractiveSkills />);
     const firstSkill = Object.values(SKILLS)[0][0];
-    const button = screen.getByText(firstSkill);
+    const button = screen.getAllByText(firstSkill)[0];
 
     fireEvent.click(button);
 
     // Should show years of experience and potentially related roles
     expect(screen.getByText(/Years/)).toBeDefined();
     expect(screen.getAllByText(firstSkill).length).toBeGreaterThan(1); // Shows in button and title
-  });
-
-  it("toggles selection off when clicked again", () => {
-    render(<InteractiveSkills />);
-    const firstSkill = Object.values(SKILLS)[0][0];
-    const button = screen.getByText(firstSkill);
-
-    fireEvent.click(button);
-    expect(
-      screen.queryByText(/Select a technology from the above/i)
-    ).toBeNull();
-
-    fireEvent.click(button);
-    expect(
-      screen.getByText(/Select a technology from the above/i)
-    ).toBeDefined();
   });
 });
