@@ -10,32 +10,34 @@ Is it practical? Probably not. Is it cool? Absolutely.
 
 ## The Fun Stuff
 
-- **Portfolio Site**: Standard Next.js website with my experience, projects, and publications
+- **Portfolio Site**: Next.js website with my experience, projects, and publications
 - **MCP Server**: Go serverless functions that expose resume data via structured tools
 - **Type Safety**: Protocol Buffers for the resume schema because I care about data integrity
+- **Spotify Sync**: GitHub Action cron job that records my listening history to a Neon database every 15 minutes
 - **Pretty Animations**: Framer Motion makes things swoosh nicely
 - **Dark Mode**: Obviously
 
 ## Tech Stack
 
 ```
-Frontend:  Next.js 16 + React 19 + Tailwind CSS v4
+Frontend:  Next.js + React 19 + Tailwind CSS v4
 Backend:   Go (serverless on Vercel)
-Data:      Protocol Buffers + TOML
+Data:      Protocol Buffers + TOML + Neon (Postgres) + Drizzle ORM
 Testing:   Vitest + React Testing Library
+Automation: GitHub Actions
 Deploy:    Vercel
 ```
 
 ## Local Development
 
 ```bash
-# Install stuff
+# Install dependencies
 pnpm install
 
 # Run dev server
 pnpm dev
 
-# Run tests (if you're into that)
+# Run tests
 pnpm test
 
 # Build for production
