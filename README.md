@@ -1,5 +1,7 @@
 # nikzad.io
 
+[![Spotify Listening History Synchronizer](https://github.com/nikzadkhani/nikzadio/actions/workflows/spotify-cron.yml/badge.svg)](https://github.com/nikzadkhani/nikzadio/actions/workflows/spotify-cron.yml)
+
 Personal portfolio site at [nikzad.io](https://nikzad.io).
 
 ## Stack
