@@ -1,0 +1,37 @@
+name: Spotify Listening History Synchronizer
+
+on:
+  schedule:
+    # Run every 5 minutes
+    - cron: "*/5 * * * *"
+  # Allow manual trigger from the GitHub Actions tab for debugging
+  workflow_dispatch:
+
+jobs:
+  sync_spotify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Vercel Serverless Sync
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          # In production, this would be your actual domain (e.g. https://nikzad.io/api/cron/spotify)
+          # Make sure to set VERCEL_PRODUCTION_URL in GitHub Secrets too
+          URL: ${{ secrets.VERCEL_PRODUCTION_URL }}/api/cron/spotify
+        run: |
+          if [ -z "$CRON_SECRET" ] || [ -z "${{ secrets.VERCEL_PRODUCTION_URL }}" ]; then
+             echo "Missing required Gitub Secrets (CRON_SECRET or VERCEL_PRODUCTION_URL). Skipping execution."
+             exit 1
+          fi
+
+          response=$(curl -s -w "\n%{http_code}" -X GET -H "Authorization: Bearer $CRON_SECRET" "$URL")
+          body=$(echo "$response" | head -n -1)
+          status_code=$(echo "$response" | tail -n 1)
+
+          echo "Status Code: $status_code"
+          echo "Response Body: $body"
+
+          if [ "$status_code" -ne 200 ]; then
+            echo "::error:: Failed to sync Spotify history. Server responded with status code $status_code."
+            exit 1
+          fi

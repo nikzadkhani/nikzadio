@@ -1,1 +1,1 @@
-export { OfflineSection } from './offline-section';
+export { OfflineSection } from "./offline-section";

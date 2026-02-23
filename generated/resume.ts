@@ -109,11 +109,22 @@ export interface Education {
 }
 
 function createBaseResume(): Resume {
-  return { name: "", title: "", bio: "", jobs: [], education: [], skills: [], publications: [] };
+  return {
+    name: "",
+    title: "",
+    bio: "",
+    jobs: [],
+    education: [],
+    skills: [],
+    publications: [],
+  };
 }
 
 export const Resume: MessageFns<Resume> = {
-  encode(message: Resume, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: Resume,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.name !== "") {
       writer.uint32(10).string(message.name);
     }
@@ -139,7 +150,8 @@ export const Resume: MessageFns<Resume> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): Resume {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseResume();
     while (reader.pos < end) {
@@ -198,7 +210,9 @@ export const Resume: MessageFns<Resume> = {
             break;
           }
 
-          message.publications.push(Publication.decode(reader, reader.uint32()));
+          message.publications.push(
+            Publication.decode(reader, reader.uint32()),
+          );
           continue;
         }
       }
@@ -215,11 +229,15 @@ export const Resume: MessageFns<Resume> = {
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       title: isSet(object.title) ? globalThis.String(object.title) : "",
       bio: isSet(object.bio) ? globalThis.String(object.bio) : "",
-      jobs: globalThis.Array.isArray(object?.jobs) ? object.jobs.map((e: any) => Job.fromJSON(e)) : [],
+      jobs: globalThis.Array.isArray(object?.jobs)
+        ? object.jobs.map((e: any) => Job.fromJSON(e))
+        : [],
       education: globalThis.Array.isArray(object?.education)
         ? object.education.map((e: any) => Education.fromJSON(e))
         : [],
-      skills: globalThis.Array.isArray(object?.skills) ? object.skills.map((e: any) => SkillGroup.fromJSON(e)) : [],
+      skills: globalThis.Array.isArray(object?.skills)
+        ? object.skills.map((e: any) => SkillGroup.fromJSON(e))
+        : [],
       publications: globalThis.Array.isArray(object?.publications)
         ? object.publications.map((e: any) => Publication.fromJSON(e))
         : [],
@@ -261,9 +279,11 @@ export const Resume: MessageFns<Resume> = {
     message.title = object.title ?? "";
     message.bio = object.bio ?? "";
     message.jobs = object.jobs?.map((e) => Job.fromPartial(e)) || [];
-    message.education = object.education?.map((e) => Education.fromPartial(e)) || [];
+    message.education =
+      object.education?.map((e) => Education.fromPartial(e)) || [];
     message.skills = object.skills?.map((e) => SkillGroup.fromPartial(e)) || [];
-    message.publications = object.publications?.map((e) => Publication.fromPartial(e)) || [];
+    message.publications =
+      object.publications?.map((e) => Publication.fromPartial(e)) || [];
     return message;
   },
 };
@@ -273,7 +293,10 @@ function createBaseSkillGroup(): SkillGroup {
 }
 
 export const SkillGroup: MessageFns<SkillGroup> = {
-  encode(message: SkillGroup, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: SkillGroup,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.category !== 0) {
       writer.uint32(8).int32(message.category);
     }
@@ -284,7 +307,8 @@ export const SkillGroup: MessageFns<SkillGroup> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): SkillGroup {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseSkillGroup();
     while (reader.pos < end) {
@@ -318,7 +342,9 @@ export const SkillGroup: MessageFns<SkillGroup> = {
   fromJSON(object: any): SkillGroup {
     return {
       category: isSet(object.category) ? categoryFromJSON(object.category) : 0,
-      names: globalThis.Array.isArray(object?.names) ? object.names.map((e: any) => globalThis.String(e)) : [],
+      names: globalThis.Array.isArray(object?.names)
+        ? object.names.map((e: any) => globalThis.String(e))
+        : [],
     };
   },
 
@@ -336,7 +362,9 @@ export const SkillGroup: MessageFns<SkillGroup> = {
   create<I extends Exact<DeepPartial<SkillGroup>, I>>(base?: I): SkillGroup {
     return SkillGroup.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<SkillGroup>, I>>(object: I): SkillGroup {
+  fromPartial<I extends Exact<DeepPartial<SkillGroup>, I>>(
+    object: I,
+  ): SkillGroup {
     const message = createBaseSkillGroup();
     message.category = object.category ?? 0;
     message.names = object.names?.map((e) => e) || [];
@@ -345,11 +373,21 @@ export const SkillGroup: MessageFns<SkillGroup> = {
 };
 
 function createBasePublication(): Publication {
-  return { title: "", conference: "", date: "", description: [], link: "", skills: [] };
+  return {
+    title: "",
+    conference: "",
+    date: "",
+    description: [],
+    link: "",
+    skills: [],
+  };
 }
 
 export const Publication: MessageFns<Publication> = {
-  encode(message: Publication, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: Publication,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.title !== "") {
       writer.uint32(10).string(message.title);
     }
@@ -372,7 +410,8 @@ export const Publication: MessageFns<Publication> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): Publication {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBasePublication();
     while (reader.pos < end) {
@@ -438,13 +477,17 @@ export const Publication: MessageFns<Publication> = {
   fromJSON(object: any): Publication {
     return {
       title: isSet(object.title) ? globalThis.String(object.title) : "",
-      conference: isSet(object.conference) ? globalThis.String(object.conference) : "",
+      conference: isSet(object.conference)
+        ? globalThis.String(object.conference)
+        : "",
       date: isSet(object.date) ? globalThis.String(object.date) : "",
       description: globalThis.Array.isArray(object?.description)
         ? object.description.map((e: any) => globalThis.String(e))
         : [],
       link: isSet(object.link) ? globalThis.String(object.link) : "",
-      skills: globalThis.Array.isArray(object?.skills) ? object.skills.map((e: any) => globalThis.String(e)) : [],
+      skills: globalThis.Array.isArray(object?.skills)
+        ? object.skills.map((e: any) => globalThis.String(e))
+        : [],
     };
   },
 
@@ -474,7 +517,9 @@ export const Publication: MessageFns<Publication> = {
   create<I extends Exact<DeepPartial<Publication>, I>>(base?: I): Publication {
     return Publication.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<Publication>, I>>(object: I): Publication {
+  fromPartial<I extends Exact<DeepPartial<Publication>, I>>(
+    object: I,
+  ): Publication {
     const message = createBasePublication();
     message.title = object.title ?? "";
     message.conference = object.conference ?? "";
@@ -487,11 +532,23 @@ export const Publication: MessageFns<Publication> = {
 };
 
 function createBaseJob(): Job {
-  return { company: "", tagline: "", title: "", start: "", end: "", location: "", description: [], skills: [] };
+  return {
+    company: "",
+    tagline: "",
+    title: "",
+    start: "",
+    end: "",
+    location: "",
+    description: [],
+    skills: [],
+  };
 }
 
 export const Job: MessageFns<Job> = {
-  encode(message: Job, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: Job,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.company !== "") {
       writer.uint32(10).string(message.company);
     }
@@ -520,7 +577,8 @@ export const Job: MessageFns<Job> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): Job {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseJob();
     while (reader.pos < end) {
@@ -606,11 +664,15 @@ export const Job: MessageFns<Job> = {
       title: isSet(object.title) ? globalThis.String(object.title) : "",
       start: isSet(object.start) ? globalThis.String(object.start) : "",
       end: isSet(object.end) ? globalThis.String(object.end) : "",
-      location: isSet(object.location) ? globalThis.String(object.location) : "",
+      location: isSet(object.location)
+        ? globalThis.String(object.location)
+        : "",
       description: globalThis.Array.isArray(object?.description)
         ? object.description.map((e: any) => globalThis.String(e))
         : [],
-      skills: globalThis.Array.isArray(object?.skills) ? object.skills.map((e: any) => globalThis.String(e)) : [],
+      skills: globalThis.Array.isArray(object?.skills)
+        ? object.skills.map((e: any) => globalThis.String(e))
+        : [],
     };
   },
 
@@ -665,7 +727,10 @@ function createBaseEducation(): Education {
 }
 
 export const Education: MessageFns<Education> = {
-  encode(message: Education, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(
+    message: Education,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.school !== "") {
       writer.uint32(10).string(message.school);
     }
@@ -682,7 +747,8 @@ export const Education: MessageFns<Education> = {
   },
 
   decode(input: BinaryReader | Uint8Array, length?: number): Education {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const reader =
+      input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
     const message = createBaseEducation();
     while (reader.pos < end) {
@@ -758,7 +824,9 @@ export const Education: MessageFns<Education> = {
   create<I extends Exact<DeepPartial<Education>, I>>(base?: I): Education {
     return Education.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<Education>, I>>(object: I): Education {
+  fromPartial<I extends Exact<DeepPartial<Education>, I>>(
+    object: I,
+  ): Education {
     const message = createBaseEducation();
     message.school = object.school ?? "";
     message.degree = object.degree ?? "";
@@ -768,17 +836,31 @@ export const Education: MessageFns<Education> = {
   },
 };
 
-type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+type Builtin =
+  | Date
+  | Function
+  | Uint8Array
+  | string
+  | number
+  | boolean
+  | undefined;
 
-export type DeepPartial<T> = T extends Builtin ? T
-  : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>>
-  : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
-  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
-  : Partial<T>;
+export type DeepPartial<T> = T extends Builtin
+  ? T
+  : T extends globalThis.Array<infer U>
+    ? globalThis.Array<DeepPartial<U>>
+    : T extends ReadonlyArray<infer U>
+      ? ReadonlyArray<DeepPartial<U>>
+      : T extends {}
+        ? { [K in keyof T]?: DeepPartial<T[K]> }
+        : Partial<T>;
 
 type KeysOfUnion<T> = T extends T ? keyof T : never;
-export type Exact<P, I extends P> = P extends Builtin ? P
-  : P & { [K in keyof P]: Exact<P[K], I[K]> } & { [K in Exclude<keyof I, KeysOfUnion<P>>]: never };
+export type Exact<P, I extends P> = P extends Builtin
+  ? P
+  : P & { [K in keyof P]: Exact<P[K], I[K]> } & {
+      [K in Exclude<keyof I, KeysOfUnion<P>>]: never;
+    };
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

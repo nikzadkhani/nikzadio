@@ -56,7 +56,13 @@
   }
 
   .mask-gradient-x {
-    mask-image: linear-gradient(to right, transparent, black 20px, black calc(100% - 20px), transparent);
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 20px,
+      black calc(100% - 20px),
+      transparent
+    );
   }
 }
 

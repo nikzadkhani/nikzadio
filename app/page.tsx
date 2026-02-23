@@ -1,9 +1,9 @@
-import { HeroSection } from '@/features/hero'
-import { InteractiveSkills } from '@/features/skills'
-import { ExperienceSection } from '@/features/experience'
-import { EducationSection } from '@/features/education'
-import { PublicationsSection } from '@/features/publications'
-import { Footer } from '@/layout'
+import { HeroSection } from "@/features/hero";
+import { InteractiveSkills } from "@/features/skills";
+import { ExperienceSection } from "@/features/experience";
+import { EducationSection } from "@/features/education";
+import { PublicationsSection } from "@/features/publications";
+import { Footer } from "@/layout";
 
 export default function Page() {
   return (
@@ -30,5 +30,5 @@ export default function Page() {
         <Footer />
       </div>
     </div>
-  )
+  );
 }
